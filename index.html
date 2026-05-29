@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -31,7 +30,7 @@
             color: var(--white);
         }
 
-        /* ========== КОНВЕРТ ========== */
+        /* ========== КОНВЕРТ (начальный) ========== */
         .envelope-overlay {
             position: fixed;
             top: 0;
@@ -132,9 +131,9 @@
             opacity: 1;
         }
 
-        /* ========== ГЕРОЙ — чистый блок без обводки, теней, фона ========== */
+        /* ========== ГЕРОЙ — уменьшенная высота, чтобы имена и дата были видны сразу ========== */
         .hero {
-            height: 100vh;
+            height: 85vh; /* Уменьшил с 100vh до 85vh, чтобы текст был виден сразу при открытии */
             display: flex;
             position: relative;
             opacity: 0;
@@ -163,11 +162,10 @@
         /* Абсолютно никакой обводки, фона, теней, рамок — только текст поверх фото */
         .hero-info {
             position: absolute;
-            bottom: 50px;
+            bottom: 40px;
             left: 30px;
             text-align: left;
             z-index: 2;
-            /* Убрали background, backdrop-filter, border, shadow — ничего */
             background: transparent;
             padding: 0;
             border-radius: 0;
@@ -181,8 +179,7 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 6px;
-            color: #0a0a0a; /* Черный цвет */
-            /* Убрали любые тени */
+            color: #0a0a0a;
             text-shadow: none;
         }
 
@@ -190,7 +187,7 @@
             font-size: 16px;
             letter-spacing: 6px;
             font-weight: 400;
-            color: var(--burgundy); /* Бордовый */
+            color: var(--burgundy);
             text-shadow: none;
         }
 
@@ -627,6 +624,91 @@
             font-weight: 200;
         }
 
+        /* ========== КРАСИВЫЙ КОНВЕРТ ПОСЛЕ ПОДАРКОВ ========== */
+        .envelope-gift-section {
+            background-color: var(--black);
+            padding: 40px 25px 70px 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .envelope-gift-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .elegant-envelope {
+            position: relative;
+            max-width: 380px;
+            width: 100%;
+            background: #1a1618;
+            background-image: repeating-linear-gradient(45deg, rgba(122,18,18,0.08) 0px, rgba(122,18,18,0.08) 2px, transparent 2px, transparent 8px);
+            border-radius: 4px;
+            padding: 35px 28px 28px 28px;
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+            border: 1px solid rgba(122,18,18,0.4);
+            transition: all 0.3s ease;
+        }
+        /* Имитация скотча сверху */
+        .elegant-envelope::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 18px;
+            background: rgba(210, 180, 140, 0.65);
+            background: linear-gradient(135deg, rgba(200,170,120,0.7) 0%, rgba(230,200,150,0.85) 50%, rgba(180,150,100,0.7) 100%);
+            border-radius: 2px 2px 12px 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            backdrop-filter: blur(1px);
+        }
+        /* дополнительная полоска для реалистичности */
+        .elegant-envelope::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65%;
+            height: 6px;
+            background: rgba(240,210,140,0.5);
+            border-radius: 2px;
+            filter: blur(1px);
+        }
+        .envelope-label {
+            font-family: 'Great Vibes', cursive;
+            font-size: 28px;
+            color: var(--burgundy);
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            border-bottom: 1px dashed rgba(122,18,18,0.5);
+            display: inline-block;
+            width: 100%;
+        }
+        .envelope-message {
+            font-size: 13px;
+            line-height: 1.75;
+            text-align: center;
+            font-weight: 200;
+            color: #ddd;
+            margin: 20px 0;
+        }
+        .envelope-heart {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            color: var(--burgundy);
+            font-size: 14px;
+            letter-spacing: 4px;
+        }
+
         /* ========== ВАЖНО ========== */
         .important-section {
             background-color: #111111;
@@ -864,7 +946,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ========== КОНТАКТЫ: номер телефона белый, без подчеркивания ========== */
+        /* ========== КОНТАКТЫ ========== */
         .contact-section {
             background-color: #111111;
             padding: 70px 25px;
@@ -1015,15 +1097,17 @@
             .important-box { padding: 28px 22px; }
             .contact-card { padding: 28px 22px; }
             .countdown-number { font-size: 28px; padding: 6px 10px; }
-            .hero-info { bottom: 40px; left: 20px; }
+            .hero { height: 80vh; }
+            .hero-info { bottom: 30px; left: 20px; }
         }
 
         @media (max-width: 480px) {
             .hero-names { font-size: 20px; letter-spacing: 2px; }
             .hero-date { font-size: 13px; letter-spacing: 4px; }
+            .hero { height: 75vh; }
             .gallery-track img { width: 58vw; max-width: 170px; aspect-ratio: 2 / 2.8; }
             .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
-            .hero-info { bottom: 35px; left: 16px; }
+            .hero-info { bottom: 25px; left: 16px; }
         }
     </style>
 </head>
@@ -1113,6 +1197,20 @@
                 <p>Можете не переживать по поводу подарка, мы будем благодарны вашим пожеланиям в конвертах.</p>
                 <p>Многие считают важной деталью дарить на свадьбу цветы, но у нас дома не найдется столько ваз! Поэтому, если вы вдруг собирались покупать букет – мы будем рады любой альтернативе на память (конечно же, по желанию).</p>
                 <p>И помните, самый важный и ценный подарок для нас – ваше присутствие!</p>
+            </div>
+        </section>
+
+        <!-- КРАСИВЫЙ КОНВЕРТ С ИМИТАЦИЕЙ СКОТЧА -->
+        <section class="envelope-gift-section">
+            <div class="elegant-envelope">
+                <div class="envelope-label">Для Вас с любовью</div>
+                <div class="envelope-message">
+                    Если вы захотите поздравить нас особенным образом,<br>
+                    конверт для ваших тёплых пожеланий и сюрпризов всегда открыт с огромной благодарностью.
+                </div>
+                <div class="envelope-heart">
+                    <span>❤️</span> <span>♥️</span> <span>❤️</span>
+                </div>
             </div>
         </section>
 
@@ -1226,7 +1324,7 @@
             const appearObserver = new IntersectionObserver((entries) => {
                 entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
             }, { threshold: 0.15 });
-            document.querySelectorAll('.location-section, .dresscode-section, .gifts-section, .important-section, .survey-section, .contact-section, .countdown-section').forEach(el => appearObserver.observe(el));
+            document.querySelectorAll('.location-section, .dresscode-section, .gifts-section, .important-section, .survey-section, .contact-section, .countdown-section, .envelope-gift-section').forEach(el => appearObserver.observe(el));
 
             const timelineObs = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
