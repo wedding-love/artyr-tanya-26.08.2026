@@ -131,11 +131,11 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН: РАСШИРЕННОЕ ФОТО, СТРОГО 100vh ========== */
+        /* ========== ПЕРВЫЙ ЭКРАН: ИМЕНА ПРИПОДНЯТЫ ВЫШЕ ========== */
         .first-screen {
             position: relative;
             height: 100vh;
-            height: 100dvh; /* для мобильных с динамической высотой */
+            height: 100dvh;
             width: 100%;
             overflow: hidden;
             background: #000;
@@ -160,10 +160,9 @@
             height: 100%;
             background: url('молодые.JPG') center/cover no-repeat;
             background-size: cover;
-            background-position: center 35%; /* чуть ниже фокус */
+            background-position: center 35%;
             filter: grayscale(100%);
             z-index: 0;
-            /* Лёгкое масштабирование чтобы фото казалось ближе и шире */
             transform: scale(1.02);
         }
         .hero.visible {
@@ -171,10 +170,10 @@
             transform: scale(1);
         }
         
-        /* Блок с именами — опущен ниже, шрифт легче */
+        /* Блок с именами — приподнят выше */
         .hero-info {
             position: absolute;
-            bottom: clamp(70px, 14vh, 110px); /* Опущено ниже */
+            bottom: 60px; /* Было 45px, подняли выше */
             left: clamp(18px, 6vw, 36px);
             text-align: left;
             z-index: 2;
@@ -185,13 +184,12 @@
             border: none;
             max-width: calc(100% - 40px);
         }
-        /* Уменьшенный, нежирный шрифт для имен */
         .hero-names {
             font-size: clamp(20px, 5.5vw, 38px);
-            font-weight: 300; /* Лёгкий */
+            font-weight: 300;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             color: #0a0a0a;
             text-shadow: none;
             line-height: 1.1;
@@ -199,12 +197,12 @@
         .hero-date {
             font-size: clamp(13px, 3.5vw, 17px);
             letter-spacing: 3px;
-            font-weight: 400; /* Тоже облегчён */
+            font-weight: 400;
             color: var(--burgundy);
             text-shadow: none;
         }
 
-        /* Тонкая, адаптивная лента */
+        /* Тонкая лента */
         .invitation-ribbon {
             position: absolute;
             bottom: 0;
@@ -236,10 +234,10 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Точная настройка для мобильных */
+        /* Адаптив для мобильных */
         @media (max-width: 768px) {
             .hero-info {
-                bottom: 75px;
+                bottom: 57px; /* Было 42px, подняли выше */
                 left: 20px;
             }
             .hero-names {
@@ -254,7 +252,7 @@
         }
         @media (max-width: 480px) {
             .hero-info {
-                bottom: 65px;
+                bottom: 53px; /* Было 38px, подняли выше */
                 left: 16px;
             }
             .hero-names {
@@ -274,7 +272,7 @@
         }
         @media (max-width: 380px) {
             .hero-info {
-                bottom: 60px;
+                bottom: 50px; /* Было 35px, подняли выше */
                 left: 14px;
             }
             .hero-names {
@@ -1091,7 +1089,7 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <!-- ПЕРВЫЙ ЭКРАН: РАСШИРЕННОЕ ФОТО В ОДИН ЭКРАН -->
+        <!-- ПЕРВЫЙ ЭКРАН: ИМЕНА ПРИПОДНЯТЫ -->
         <div class="first-screen">
             <div class="hero">
                 <div class="hero-info">
