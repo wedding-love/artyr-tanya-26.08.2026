@@ -131,7 +131,7 @@
             opacity: 1;
         }
 
-        /* ========== ГЕРОЙ ========== */
+        /* ========== ГЕРОЙ - подняли блок выше, сделали имена черными, дату бордовой, убрали рамку ========== */
         .hero {
             height: 100vh;
             display: flex;
@@ -159,33 +159,37 @@
             transform: scale(1);
         }
 
+        /* Изменения: поднял выше (bottom теперь 60% вместо 50px, также сдвинул чуть выше по вертикали) 
+           Убрал border-left и backdrop-filter, чтобы не было рамки. Сделал фон с минимальной прозрачностью для читаемости,
+           но без боковой линии. Имена — черные, дата — бордовая. */
         .hero-info {
             position: absolute;
-            bottom: 50px;
+            bottom: 60%;
             left: 30px;
             text-align: left;
             z-index: 2;
-            background: rgba(0,0,0,0.55);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.45);
             padding: 14px 24px;
             border-radius: 6px;
-            border-left: 3px solid var(--burgundy);
+            /* Убрали border-left и backdrop-filter для чистоты, нет рамки */
         }
 
         .hero-names {
-            font-size: clamp(24px, 6vw, 48px);
-            font-weight: 200;
+            font-size: clamp(26px, 7vw, 52px);
+            font-weight: 500;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 6px;
-            color: var(--white);
+            margin-bottom: 8px;
+            color: #0a0a0a; /* Черный цвет для имен */
+            text-shadow: 0 1px 1px rgba(255,255,255,0.3);
         }
 
         .hero-date {
-            font-size: 16px;
+            font-size: 18px;
             letter-spacing: 6px;
-            font-weight: 100;
-            color: var(--burgundy);
+            font-weight: 400;
+            color: var(--burgundy); /* Бордовый цвет */
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
         }
 
         /* ========== ПРИГЛАШЕНИЕ ========== */
@@ -858,7 +862,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ========== КОНТАКТЫ ========== */
+        /* ========== КОНТАКТЫ (номер телефона белый, без подчеркивания) ========== */
         .contact-section {
             background-color: #111111;
             padding: 70px 25px;
@@ -908,12 +912,19 @@
             margin: 10px 0;
             opacity: 0.8;
         }
+        .contact-instagram:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
 
+        /* Телефон — белый цвет, убрано подчеркивание */
         .contact-phone {
             font-size: 19px;
             letter-spacing: 1px;
             font-weight: 200;
             margin-bottom: 18px;
+            color: var(--white);
+            text-decoration: none;
         }
 
         .contact-message {
@@ -1003,14 +1014,15 @@
             .important-box { padding: 28px 22px; }
             .contact-card { padding: 28px 22px; }
             .countdown-number { font-size: 28px; padding: 6px 10px; }
-            .hero-info { bottom: 35px; left: 20px; padding: 10px 18px; }
+            .hero-info { bottom: 58%; left: 20px; padding: 10px 18px; }
         }
 
         @media (max-width: 480px) {
-            .hero-names { font-size: 18px; letter-spacing: 2px; }
-            .hero-date { font-size: 12px; letter-spacing: 4px; }
+            .hero-names { font-size: 22px; letter-spacing: 2px; }
+            .hero-date { font-size: 14px; letter-spacing: 4px; }
             .gallery-track img { width: 58vw; max-width: 170px; aspect-ratio: 2 / 2.8; }
             .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
+            .hero-info { bottom: 60%; left: 16px; padding: 8px 16px; }
         }
     </style>
 </head>
@@ -1134,6 +1146,7 @@
                 <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
                 <div class="contact-name">Света Латош</div>
                 <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
+                <!-- Телефон теперь белый, без подчеркивания, не ссылка -->
                 <div class="contact-phone">+375 29 582 6262</div>
                 <div class="contact-message">Мы будем полностью погружены в этот волшебный день, но Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями.</div>
             </div>
