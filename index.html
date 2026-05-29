@@ -1,5 +1,4 @@
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -132,22 +131,30 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН: РОВНО 100vh, ЛЕНТА СНИЗУ ========== */
-        .first-screen {
+        /* ========== ПЕРВЫЙ БЛОК: ФОТО + ЛЕНТА КАК ЕДИНОЕ ЦЕЛОЕ ========== */
+        .hero-block {
             position: relative;
-            height: 100vh;
             width: 100%;
+            background: var(--black);
+        }
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%; /* Квадратное соотношение, но с responsive */
             overflow: hidden;
         }
         .hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
             display: flex;
-            position: relative;
             opacity: 0;
             transform: scale(1.05);
             transition: opacity 2s ease-out 2s, transform 2.5s ease-out 2s;
         }
-        
         .hero::before {
             content: '';
             position: absolute;
@@ -160,16 +167,14 @@
             filter: grayscale(100%);
             z-index: 0;
         }
-
         .hero.visible {
             opacity: 1;
             transform: scale(1);
         }
-
         .hero-info {
             position: absolute;
-            bottom: 85px;
-            left: 30px;
+            bottom: 25px;
+            left: 20px;
             text-align: left;
             z-index: 2;
             background: transparent;
@@ -178,37 +183,31 @@
             box-shadow: none;
             border: none;
         }
-
         .hero-names {
-            font-size: clamp(28px, 7vw, 52px);
+            font-size: clamp(26px, 7vw, 48px);
             font-weight: 600;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             color: #0a0a0a;
             text-shadow: none;
         }
-
         .hero-date {
-            font-size: 18px;
-            letter-spacing: 6px;
+            font-size: 16px;
+            letter-spacing: 5px;
             font-weight: 500;
             color: var(--burgundy);
             text-shadow: none;
         }
 
-        /* Лента привязана к низу первого экрана — всегда внизу */
+        /* Лента — сразу под фото, без зазора, как единое целое */
         .invitation-ribbon {
-            position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
             background: var(--burgundy);
             padding: 12px 0;
             overflow: hidden;
             white-space: nowrap;
-            z-index: 3;
-            box-shadow: 0 -3px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
         }
         .invitation-ribbon-content {
             display: inline-block;
@@ -229,7 +228,65 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ========== АНИМАЦИИ ДЛЯ ВСЕХ БЛОКОВ ПРИ ПРОКРУТКЕ ========== */
+        /* Адаптивная высота фото — чтобы блок помещался на один экран */
+        @media (min-width: 768px) {
+            .hero-container {
+                height: 85vh;
+                padding-bottom: 0;
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-container {
+                height: 70vh;
+                padding-bottom: 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-container {
+                height: 65vh;
+            }
+            .hero-names {
+                font-size: 22px;
+                letter-spacing: 2px;
+            }
+            .hero-date {
+                font-size: 14px;
+                letter-spacing: 4px;
+            }
+            .hero-info {
+                bottom: 20px;
+                left: 16px;
+            }
+            .invitation-ribbon {
+                padding: 10px 0;
+            }
+            .invitation-ribbon-content {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+            .invitation-ribbon-content span {
+                padding: 0 20px;
+            }
+        }
+        @media (max-width: 380px) {
+            .hero-container {
+                height: 60vh;
+            }
+            .hero-names {
+                font-size: 20px;
+                letter-spacing: 1.5px;
+            }
+            .hero-date {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+            .hero-info {
+                bottom: 15px;
+                left: 14px;
+            }
+        }
+
+        /* ========== АНИМАЦИИ ДЛЯ ОСТАЛЬНЫХ БЛОКОВ ========== */
         .fade-up-block {
             opacity: 0;
             transform: translateY(40px);
@@ -1025,33 +1082,6 @@
             30% { opacity: 0.9; transform: scale(1.2) rotate(90deg); }
             100% { opacity: 0; transform: scale(1.8) rotate(180deg); }
         }
-
-        @media (max-width: 768px) {
-            .gallery-track img { width: 52vw; max-width: 190px; }
-            .gift-card { padding: 28px 22px; }
-            .important-box { padding: 28px 22px; }
-            .contact-card { padding: 28px 22px; }
-            .countdown-number { font-size: 28px; padding: 6px 10px; }
-            .hero-info { bottom: 75px; left: 20px; }
-            .invitation-ribbon-content { font-size: 13px; letter-spacing: 3px; }
-            .invitation-ribbon-content span { padding: 0 20px; }
-        }
-
-        @media (max-width: 480px) {
-            .hero-names { font-size: 24px; letter-spacing: 2px; }
-            .hero-date { font-size: 15px; letter-spacing: 4px; }
-            .hero-info { bottom: 70px; left: 16px; }
-            .gallery-track img { width: 58vw; max-width: 170px; }
-            .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
-            .invitation-ribbon-content { font-size: 11px; letter-spacing: 2px; }
-            .invitation-ribbon-content span { padding: 0 15px; }
-        }
-        
-        @media (max-width: 380px) {
-            .hero-names { font-size: 20px; letter-spacing: 1.5px; }
-            .hero-date { font-size: 13px; letter-spacing: 3px; }
-            .hero-info { bottom: 65px; left: 14px; }
-        }
     </style>
 </head>
 <body>
@@ -1065,12 +1095,14 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <!-- ПЕРВЫЙ ЭКРАН: ровно 100vh, фото + лента строго внизу -->
-        <div class="first-screen">
-            <div class="hero">
-                <div class="hero-info">
-                    <h1 class="hero-names">Артур & Таня</h1>
-                    <div class="hero-date">26.08.2026</div>
+        <!-- ПЕРВЫЙ БЛОК: фото и лента как единое целое, без разрывов -->
+        <div class="hero-block">
+            <div class="hero-container">
+                <div class="hero">
+                    <div class="hero-info">
+                        <h1 class="hero-names">Артур & Таня</h1>
+                        <div class="hero-date">26.08.2026</div>
+                    </div>
                 </div>
             </div>
             <div class="invitation-ribbon">
@@ -1080,7 +1112,7 @@
             </div>
         </div>
 
-        <!-- Весь остальной контент с анимацией при прокрутке -->
+        <!-- Остальной контент с анимацией при прокрутке -->
         <div class="rest-content" id="restContent">
             <section class="details fade-up-block">
                 <div class="invitation-greeting-line fade-up-item"></div>
