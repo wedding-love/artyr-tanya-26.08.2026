@@ -131,9 +131,9 @@
             opacity: 1;
         }
 
-        /* ========== ГЕРОЙ — фото больше, но текст виден сразу ========== */
+        /* ========== ГЕРОЙ — фото увеличено до 95vh, но имена видны ========== */
         .hero {
-            height: 92vh; /* чуть больше, почти на весь экран, но не полностью */
+            height: 95vh; /* максимально большое фото, но не на весь экран чтобы текст не ушел */
             display: flex;
             position: relative;
             opacity: 0;
@@ -159,10 +159,10 @@
             transform: scale(1);
         }
 
-        /* Никакой обводки, фона, теней — только текст поверх увеличенного фото */
+        /* Полностью прозрачный блок — никаких фонов, теней, рамок */
         .hero-info {
             position: absolute;
-            bottom: 45px;
+            bottom: 40px;
             left: 30px;
             text-align: left;
             z-index: 2;
@@ -174,7 +174,7 @@
         }
 
         .hero-names {
-            font-size: clamp(26px, 7vw, 52px);
+            font-size: clamp(26px, 7vw, 54px);
             font-weight: 500;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -624,10 +624,10 @@
             font-weight: 200;
         }
 
-        /* ========== КРАСИВЫЙ БОРДОВЫЙ КОНВЕРТ (реалистичный) ========== */
+        /* ========== РЕАЛИСТИЧНЫЙ КОНВЕРТ — без текста и смайлов, только визуал ========== */
         .envelope-gift-section {
             background-color: var(--black);
-            padding: 20px 25px 70px 25px;
+            padding: 30px 25px 80px 25px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -641,102 +641,91 @@
         }
         .real-envelope {
             position: relative;
-            max-width: 420px;
+            max-width: 380px;
             width: 100%;
-            background: #8b1a1a;
-            background: linear-gradient(145deg, #7a1212 0%, #5c0e0e 100%);
-            border-radius: 8px 8px 12px 12px;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
-            transition: transform 0.3s ease;
+            background: #6b1111;
+            background: linear-gradient(145deg, #7a1212 0%, #560e0e 100%);
+            border-radius: 6px 6px 12px 12px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: transform 0.2s ease;
         }
         .real-envelope:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
-        /* Клапан конверта (треугольник сверху) */
+        /* Клапан конверта (треугольная верхняя часть) */
         .envelope-flap {
             position: relative;
-            background: #9e2020;
-            background: linear-gradient(135deg, #8b1a1a, #6b1010);
+            background: #8b1e1e;
+            background: linear-gradient(135deg, #872020, #5f0f0f);
             height: 110px;
-            border-radius: 8px 8px 0 0;
-            clip-path: polygon(0% 0%, 100% 0%, 50% 70%);
-            box-shadow: inset 0 -4px 6px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.2s ease;
+            border-radius: 6px 6px 0 0;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 72%);
+            box-shadow: inset 0 -5px 6px rgba(0,0,0,0.25);
+            cursor: default;
         }
-        /* Имитация скотча поверх клапана */
+        /* Имитация скотча на клапане */
         .envelope-flap::before {
             content: '';
             position: absolute;
-            top: 18px;
+            top: 22px;
             left: 50%;
             transform: translateX(-50%);
-            width: 55%;
-            height: 24px;
-            background: rgba(210, 180, 140, 0.75);
-            background: linear-gradient(135deg, rgba(200,170,120,0.8), rgba(240,210,150,0.9), rgba(180,145,95,0.7));
-            border-radius: 4px 4px 18px 18px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            width: 60%;
+            height: 26px;
+            background: rgba(200, 175, 120, 0.7);
+            background: linear-gradient(135deg, rgba(190,160,110,0.75), rgba(230,205,150,0.85), rgba(170,140,90,0.7));
+            border-radius: 4px 4px 20px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,245,200,0.6);
             backdrop-filter: blur(2px);
-            pointer-events: none;
         }
-        /* Дополнительная полоска для реализма */
+        /* Дополнительная полоска для реалистичности скотча */
         .envelope-flap::after {
             content: '';
             position: absolute;
-            top: 28px;
+            top: 32px;
             left: 50%;
             transform: translateX(-50%);
-            width: 48%;
+            width: 52%;
             height: 8px;
-            background: rgba(245,220,150,0.6);
-            border-radius: 4px;
+            background: rgba(240,220,140,0.65);
+            border-radius: 3px;
             filter: blur(2px);
-            pointer-events: none;
         }
+        /* Нижняя часть конверта с эффектом бумаги */
         .envelope-body {
-            padding: 28px 28px 38px 28px;
+            padding: 28px 25px 35px 25px;
             text-align: center;
+            min-height: 160px;
+            background: radial-gradient(ellipse at 30% 40%, rgba(100,20,20,0.3), rgba(0,0,0,0.1));
         }
-        .envelope-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 32px;
-            color: #f5e2c1;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-        }
-        .envelope-message {
-            font-size: 13px;
-            line-height: 1.7;
-            color: #f0e0cc;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-        .envelope-hearts {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            font-size: 18px;
-            color: #ffcd94;
-            letter-spacing: 4px;
-        }
-        /* Декоративная восковая печать (имитация) */
+        /* Восковая печать внизу справа */
         .wax-seal {
             position: absolute;
             bottom: -18px;
-            right: 25px;
-            width: 44px;
-            height: 44px;
-            background: radial-gradient(circle at 30% 30%, #b3470c, #6b2a00);
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            background: radial-gradient(circle at 35% 35%, #bc5a2c, #6b2e0a);
             border-radius: 50%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,200,100,0.5);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,200,100,0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
             color: #e6c394;
             font-weight: bold;
+            font-family: serif;
+        }
+        /* Дополнительные линии сгибов для реализма */
+        .real-envelope::after {
+            content: '';
+            position: absolute;
+            bottom: 18px;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: rgba(0,0,0,0.2);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.1);
         }
 
         /* ========== ВАЖНО ========== */
@@ -1031,7 +1020,6 @@
             text-decoration: underline;
         }
 
-        /* Телефон — принудительно белый, без подчеркивания */
         .contact-phone {
             font-size: 19px;
             letter-spacing: 1px;
@@ -1042,7 +1030,6 @@
             background: transparent;
             display: inline-block;
         }
-        /* Дополнительная защита от браузерных стилей */
         a.contact-phone, .contact-phone a, .contact-phone:any-link {
             color: #ffffff !important;
             text-decoration: none !important;
@@ -1135,18 +1122,20 @@
             .important-box { padding: 28px 22px; }
             .contact-card { padding: 28px 22px; }
             .countdown-number { font-size: 28px; padding: 6px 10px; }
-            .hero { height: 88vh; }
+            .hero { height: 92vh; }
             .hero-info { bottom: 30px; left: 20px; }
+            .real-envelope { max-width: 340px; }
         }
 
         @media (max-width: 480px) {
             .hero-names { font-size: 22px; letter-spacing: 2px; }
             .hero-date { font-size: 14px; letter-spacing: 4px; }
-            .hero { height: 85vh; }
+            .hero { height: 90vh; }
             .gallery-track img { width: 58vw; max-width: 170px; aspect-ratio: 2 / 2.8; }
             .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
             .hero-info { bottom: 25px; left: 16px; }
-            .envelope-title { font-size: 26px; }
+            .real-envelope { max-width: 300px; }
+            .envelope-flap { height: 90px; }
         }
     </style>
 </head>
@@ -1239,21 +1228,12 @@
             </div>
         </section>
 
-        <!-- КРАСИВЫЙ БОРДОВЫЙ КОНВЕРТ с имитацией скотча и печати -->
+        <!-- РЕАЛИСТИЧНЫЙ БОРДОВЫЙ КОНВЕРТ: без текста, без смайлов, только визуал -->
         <section class="envelope-gift-section">
             <div class="real-envelope">
                 <div class="envelope-flap"></div>
-                <div class="envelope-body">
-                    <div class="envelope-title">Для Вас с любовью</div>
-                    <div class="envelope-message">
-                        Если вы захотите поздравить нас особенным образом,<br>
-                        конверт для ваших тёплых пожеланий и сюрпризов всегда открыт с огромной благодарностью.
-                    </div>
-                    <div class="envelope-hearts">
-                        <span>❤️</span> <span>♥️</span> <span>❤️</span>
-                    </div>
-                </div>
-                <div class="wax-seal">✦</div>
+                <div class="envelope-body"></div>
+                <div class="wax-seal">⚜</div>
             </div>
         </section>
 
@@ -1288,7 +1268,6 @@
                 <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
                 <div class="contact-name">Света Латош</div>
                 <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
-                <!-- Телефон гарантированно белый, без подчеркивания -->
                 <div class="contact-phone">+375 29 582 6262</div>
                 <div class="contact-message">Мы будем полностью погружены в этот волшебный день, но Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями.</div>
             </div>
