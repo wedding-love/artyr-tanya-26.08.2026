@@ -131,10 +131,11 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН: ИСПРАВЛЕННАЯ АДАПТИВНОСТЬ ========== */
+        /* ========== ПЕРВЫЙ ЭКРАН: РАСШИРЕННОЕ ФОТО, СТРОГО 100vh ========== */
         .first-screen {
             position: relative;
             height: 100vh;
+            height: 100dvh; /* для мобильных с динамической высотой */
             width: 100%;
             overflow: hidden;
             background: #000;
@@ -158,21 +159,23 @@
             width: 100%;
             height: 100%;
             background: url('молодые.JPG') center/cover no-repeat;
-            /* Увеличиваем фото, чтобы оно занимало больше пространства, но не обрезало важное */
             background-size: cover;
-            background-position: center 30%;
+            background-position: center 35%; /* чуть ниже фокус */
             filter: grayscale(100%);
             z-index: 0;
+            /* Лёгкое масштабирование чтобы фото казалось ближе и шире */
+            transform: scale(1.02);
         }
         .hero.visible {
             opacity: 1;
             transform: scale(1);
         }
+        
         /* Блок с именами — опущен ниже, шрифт легче */
         .hero-info {
             position: absolute;
-            bottom: clamp(65px, 13vh, 100px); /* Опустили ниже */
-            left: clamp(16px, 5vw, 32px);
+            bottom: clamp(70px, 14vh, 110px); /* Опущено ниже */
+            left: clamp(18px, 6vw, 36px);
             text-align: left;
             z-index: 2;
             background: transparent;
@@ -184,8 +187,8 @@
         }
         /* Уменьшенный, нежирный шрифт для имен */
         .hero-names {
-            font-size: clamp(20px, 5.5vw, 38px); /* Ещё немного уменьшен */
-            font-weight: 300; /* Не жирный, легкий */
+            font-size: clamp(20px, 5.5vw, 38px);
+            font-weight: 300; /* Лёгкий */
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 4px;
@@ -196,7 +199,7 @@
         .hero-date {
             font-size: clamp(13px, 3.5vw, 17px);
             letter-spacing: 3px;
-            font-weight: 400; /* Тоже облегчен */
+            font-weight: 400; /* Тоже облегчён */
             color: var(--burgundy);
             text-shadow: none;
         }
@@ -208,7 +211,7 @@
             left: 0;
             width: 100%;
             background: var(--burgundy);
-            padding: 8px 0; /* Тоньше */
+            padding: 8px 0;
             overflow: hidden;
             white-space: nowrap;
             z-index: 3;
@@ -218,7 +221,7 @@
             display: inline-block;
             animation: scrollRibbon 20s linear infinite;
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(9px, 3vw, 13px); /* Уменьшен шрифт */
+            font-size: clamp(9px, 3vw, 13px);
             letter-spacing: 2px;
             font-weight: 300;
             color: var(--white);
@@ -236,8 +239,8 @@
         /* Точная настройка для мобильных */
         @media (max-width: 768px) {
             .hero-info {
-                bottom: 70px; /* Опущено */
-                left: 18px;
+                bottom: 75px;
+                left: 20px;
             }
             .hero-names {
                 letter-spacing: 1.5px;
@@ -251,11 +254,11 @@
         }
         @media (max-width: 480px) {
             .hero-info {
-                bottom: 60px; /* Ещё ниже */
-                left: 14px;
+                bottom: 65px;
+                left: 16px;
             }
             .hero-names {
-                font-size: 22px; /* Уменьшен */
+                font-size: 22px;
                 letter-spacing: 1px;
             }
             .hero-date {
@@ -271,8 +274,8 @@
         }
         @media (max-width: 380px) {
             .hero-info {
-                bottom: 55px;
-                left: 12px;
+                bottom: 60px;
+                left: 14px;
             }
             .hero-names {
                 font-size: 20px;
@@ -1088,7 +1091,7 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <!-- ПЕРВЫЙ ЭКРАН: ИСПРАВЛЕН -->
+        <!-- ПЕРВЫЙ ЭКРАН: РАСШИРЕННОЕ ФОТО В ОДИН ЭКРАН -->
         <div class="first-screen">
             <div class="hero">
                 <div class="hero-info">
