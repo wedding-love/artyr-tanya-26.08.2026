@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -131,8 +132,8 @@
             opacity: 1;
         }
 
-        /* ========== ГЕРОЙ — увеличенное фото 100vh с лентой внизу ========== */
-        .hero-section {
+        /* ========== ПЕРВЫЙ ЭКРАН: РОВНО 100vh, ЛЕНТА СНИЗУ ========== */
+        .first-screen {
             position: relative;
             height: 100vh;
             width: 100%;
@@ -167,7 +168,7 @@
 
         .hero-info {
             position: absolute;
-            bottom: 80px;
+            bottom: 85px;
             left: 30px;
             text-align: left;
             z-index: 2;
@@ -179,8 +180,8 @@
         }
 
         .hero-names {
-            font-size: clamp(26px, 7vw, 54px);
-            font-weight: 500;
+            font-size: clamp(28px, 7vw, 52px);
+            font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 6px;
@@ -191,12 +192,12 @@
         .hero-date {
             font-size: 18px;
             letter-spacing: 6px;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--burgundy);
             text-shadow: none;
         }
 
-        /* Лента привязана к низу первого экрана — видна сразу */
+        /* Лента привязана к низу первого экрана — всегда внизу */
         .invitation-ribbon {
             position: absolute;
             bottom: 0;
@@ -207,7 +208,7 @@
             overflow: hidden;
             white-space: nowrap;
             z-index: 3;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 -3px 12px rgba(0,0,0,0.3);
         }
         .invitation-ribbon-content {
             display: inline-block;
@@ -238,8 +239,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Задержки для вложенных элементов */
         .fade-up-item {
             opacity: 0;
             transform: translateY(25px);
@@ -250,11 +249,11 @@
             transform: translateY(0);
         }
         .fade-up-block.visible .fade-up-item:nth-child(1) { transition-delay: 0.05s; }
-        .fade-up-block.visible .fade-up-item:nth-child(2) { transition-delay: 0.15s; }
-        .fade-up-block.visible .fade-up-item:nth-child(3) { transition-delay: 0.25s; }
-        .fade-up-block.visible .fade-up-item:nth-child(4) { transition-delay: 0.35s; }
-        .fade-up-block.visible .fade-up-item:nth-child(5) { transition-delay: 0.45s; }
-        .fade-up-block.visible .fade-up-item:nth-child(6) { transition-delay: 0.55s; }
+        .fade-up-block.visible .fade-up-item:nth-child(2) { transition-delay: 0.12s; }
+        .fade-up-block.visible .fade-up-item:nth-child(3) { transition-delay: 0.19s; }
+        .fade-up-block.visible .fade-up-item:nth-child(4) { transition-delay: 0.26s; }
+        .fade-up-block.visible .fade-up-item:nth-child(5) { transition-delay: 0.33s; }
+        .fade-up-block.visible .fade-up-item:nth-child(6) { transition-delay: 0.40s; }
 
         /* ========== ПРИГЛАШЕНИЕ ========== */
         .details {
@@ -615,7 +614,7 @@
             transform: scale(1.02);
         }
 
-        /* ========== ПОДАРКИ И КОНВЕРТ ========== */
+        /* ========== ПОДАРКИ ========== */
         .gifts-section {
             background-color: var(--black);
             padding: 70px 25px 40px 25px;
@@ -709,7 +708,7 @@
             font-size: 13px;
         }
 
-        /* ========== АНКЕТА ГОСТЯ ========== */
+        /* ========== АНКЕТА ========== */
         .survey-section {
             background-color: var(--black);
             padding: 70px 25px;
@@ -1033,19 +1032,25 @@
             .important-box { padding: 28px 22px; }
             .contact-card { padding: 28px 22px; }
             .countdown-number { font-size: 28px; padding: 6px 10px; }
-            .hero-info { bottom: 70px; left: 20px; }
+            .hero-info { bottom: 75px; left: 20px; }
             .invitation-ribbon-content { font-size: 13px; letter-spacing: 3px; }
             .invitation-ribbon-content span { padding: 0 20px; }
         }
 
         @media (max-width: 480px) {
-            .hero-names { font-size: 22px; letter-spacing: 2px; }
-            .hero-date { font-size: 14px; letter-spacing: 4px; }
-            .hero-info { bottom: 65px; left: 16px; }
+            .hero-names { font-size: 24px; letter-spacing: 2px; }
+            .hero-date { font-size: 15px; letter-spacing: 4px; }
+            .hero-info { bottom: 70px; left: 16px; }
             .gallery-track img { width: 58vw; max-width: 170px; }
             .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
             .invitation-ribbon-content { font-size: 11px; letter-spacing: 2px; }
             .invitation-ribbon-content span { padding: 0 15px; }
+        }
+        
+        @media (max-width: 380px) {
+            .hero-names { font-size: 20px; letter-spacing: 1.5px; }
+            .hero-date { font-size: 13px; letter-spacing: 3px; }
+            .hero-info { bottom: 65px; left: 14px; }
         }
     </style>
 </head>
@@ -1060,8 +1065,8 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <!-- Первый экран: фото + лента внизу -->
-        <div class="hero-section">
+        <!-- ПЕРВЫЙ ЭКРАН: ровно 100vh, фото + лента строго внизу -->
+        <div class="first-screen">
             <div class="hero">
                 <div class="hero-info">
                     <h1 class="hero-names">Артур & Таня</h1>
@@ -1075,7 +1080,7 @@
             </div>
         </div>
 
-        <!-- Контент с анимацией появления -->
+        <!-- Весь остальной контент с анимацией при прокрутке -->
         <div class="rest-content" id="restContent">
             <section class="details fade-up-block">
                 <div class="invitation-greeting-line fade-up-item"></div>
@@ -1259,7 +1264,6 @@
             });
             obs.observe(main, {attributes: true});
 
-            // Анимация появления блоков при прокрутке
             const fadeBlocks = document.querySelectorAll('.fade-up-block');
             const appearObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
