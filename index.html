@@ -131,9 +131,9 @@
             opacity: 1;
         }
 
-        /* ========== ГЕРОЙ — уменьшенная высота, чтобы имена и дата были видны сразу ========== */
+        /* ========== ГЕРОЙ — фото больше, но текст виден сразу ========== */
         .hero {
-            height: 85vh; /* Уменьшил с 100vh до 85vh, чтобы текст был виден сразу при открытии */
+            height: 92vh; /* чуть больше, почти на весь экран, но не полностью */
             display: flex;
             position: relative;
             opacity: 0;
@@ -159,10 +159,10 @@
             transform: scale(1);
         }
 
-        /* Абсолютно никакой обводки, фона, теней, рамок — только текст поверх фото */
+        /* Никакой обводки, фона, теней — только текст поверх увеличенного фото */
         .hero-info {
             position: absolute;
-            bottom: 40px;
+            bottom: 45px;
             left: 30px;
             text-align: left;
             z-index: 2;
@@ -174,7 +174,7 @@
         }
 
         .hero-names {
-            font-size: clamp(24px, 6vw, 48px);
+            font-size: clamp(26px, 7vw, 52px);
             font-weight: 500;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -184,7 +184,7 @@
         }
 
         .hero-date {
-            font-size: 16px;
+            font-size: 18px;
             letter-spacing: 6px;
             font-weight: 400;
             color: var(--burgundy);
@@ -585,7 +585,7 @@
         /* ========== ПОДАРКИ ========== */
         .gifts-section {
             background-color: var(--black);
-            padding: 70px 25px;
+            padding: 70px 25px 40px 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -624,10 +624,10 @@
             font-weight: 200;
         }
 
-        /* ========== КРАСИВЫЙ КОНВЕРТ ПОСЛЕ ПОДАРКОВ ========== */
+        /* ========== КРАСИВЫЙ БОРДОВЫЙ КОНВЕРТ (реалистичный) ========== */
         .envelope-gift-section {
             background-color: var(--black);
-            padding: 40px 25px 70px 25px;
+            padding: 20px 25px 70px 25px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -639,74 +639,104 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .elegant-envelope {
+        .real-envelope {
             position: relative;
-            max-width: 380px;
+            max-width: 420px;
             width: 100%;
-            background: #1a1618;
-            background-image: repeating-linear-gradient(45deg, rgba(122,18,18,0.08) 0px, rgba(122,18,18,0.08) 2px, transparent 2px, transparent 8px);
+            background: #8b1a1a;
+            background: linear-gradient(145deg, #7a1212 0%, #5c0e0e 100%);
+            border-radius: 8px 8px 12px 12px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        .real-envelope:hover {
+            transform: translateY(-5px);
+        }
+        /* Клапан конверта (треугольник сверху) */
+        .envelope-flap {
+            position: relative;
+            background: #9e2020;
+            background: linear-gradient(135deg, #8b1a1a, #6b1010);
+            height: 110px;
+            border-radius: 8px 8px 0 0;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 70%);
+            box-shadow: inset 0 -4px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        /* Имитация скотча поверх клапана */
+        .envelope-flap::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55%;
+            height: 24px;
+            background: rgba(210, 180, 140, 0.75);
+            background: linear-gradient(135deg, rgba(200,170,120,0.8), rgba(240,210,150,0.9), rgba(180,145,95,0.7));
+            border-radius: 4px 4px 18px 18px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            backdrop-filter: blur(2px);
+            pointer-events: none;
+        }
+        /* Дополнительная полоска для реализма */
+        .envelope-flap::after {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 48%;
+            height: 8px;
+            background: rgba(245,220,150,0.6);
             border-radius: 4px;
-            padding: 35px 28px 28px 28px;
-            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
-            border: 1px solid rgba(122,18,18,0.4);
-            transition: all 0.3s ease;
+            filter: blur(2px);
+            pointer-events: none;
         }
-        /* Имитация скотча сверху */
-        .elegant-envelope::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70%;
-            height: 18px;
-            background: rgba(210, 180, 140, 0.65);
-            background: linear-gradient(135deg, rgba(200,170,120,0.7) 0%, rgba(230,200,150,0.85) 50%, rgba(180,150,100,0.7) 100%);
-            border-radius: 2px 2px 12px 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            backdrop-filter: blur(1px);
-        }
-        /* дополнительная полоска для реалистичности */
-        .elegant-envelope::after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 65%;
-            height: 6px;
-            background: rgba(240,210,140,0.5);
-            border-radius: 2px;
-            filter: blur(1px);
-        }
-        .envelope-label {
-            font-family: 'Great Vibes', cursive;
-            font-size: 28px;
-            color: var(--burgundy);
+        .envelope-body {
+            padding: 28px 28px 38px 28px;
             text-align: center;
+        }
+        .envelope-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: #f5e2c1;
             letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: 300;
-            border-bottom: 1px dashed rgba(122,18,18,0.5);
-            display: inline-block;
-            width: 100%;
+            margin-bottom: 18px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
         }
         .envelope-message {
             font-size: 13px;
-            line-height: 1.75;
-            text-align: center;
-            font-weight: 200;
-            color: #ddd;
-            margin: 20px 0;
+            line-height: 1.7;
+            color: #f0e0cc;
+            font-weight: 300;
+            margin-bottom: 20px;
         }
-        .envelope-heart {
+        .envelope-hearts {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-            color: var(--burgundy);
-            font-size: 14px;
+            gap: 16px;
+            font-size: 18px;
+            color: #ffcd94;
             letter-spacing: 4px;
+        }
+        /* Декоративная восковая печать (имитация) */
+        .wax-seal {
+            position: absolute;
+            bottom: -18px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            background: radial-gradient(circle at 30% 30%, #b3470c, #6b2a00);
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,200,100,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #e6c394;
+            font-weight: bold;
         }
 
         /* ========== ВАЖНО ========== */
@@ -946,7 +976,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ========== КОНТАКТЫ ========== */
+        /* ========== КОНТАКТЫ (телефон БЕЛЫЙ, без подчеркивания) ========== */
         .contact-section {
             background-color: #111111;
             padding: 70px 25px;
@@ -1001,11 +1031,19 @@
             text-decoration: underline;
         }
 
+        /* Телефон — принудительно белый, без подчеркивания */
         .contact-phone {
             font-size: 19px;
             letter-spacing: 1px;
             font-weight: 200;
             margin-bottom: 18px;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            background: transparent;
+            display: inline-block;
+        }
+        /* Дополнительная защита от браузерных стилей */
+        a.contact-phone, .contact-phone a, .contact-phone:any-link {
             color: #ffffff !important;
             text-decoration: none !important;
         }
@@ -1097,17 +1135,18 @@
             .important-box { padding: 28px 22px; }
             .contact-card { padding: 28px 22px; }
             .countdown-number { font-size: 28px; padding: 6px 10px; }
-            .hero { height: 80vh; }
+            .hero { height: 88vh; }
             .hero-info { bottom: 30px; left: 20px; }
         }
 
         @media (max-width: 480px) {
-            .hero-names { font-size: 20px; letter-spacing: 2px; }
-            .hero-date { font-size: 13px; letter-spacing: 4px; }
-            .hero { height: 75vh; }
+            .hero-names { font-size: 22px; letter-spacing: 2px; }
+            .hero-date { font-size: 14px; letter-spacing: 4px; }
+            .hero { height: 85vh; }
             .gallery-track img { width: 58vw; max-width: 170px; aspect-ratio: 2 / 2.8; }
             .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
             .hero-info { bottom: 25px; left: 16px; }
+            .envelope-title { font-size: 26px; }
         }
     </style>
 </head>
@@ -1200,17 +1239,21 @@
             </div>
         </section>
 
-        <!-- КРАСИВЫЙ КОНВЕРТ С ИМИТАЦИЕЙ СКОТЧА -->
+        <!-- КРАСИВЫЙ БОРДОВЫЙ КОНВЕРТ с имитацией скотча и печати -->
         <section class="envelope-gift-section">
-            <div class="elegant-envelope">
-                <div class="envelope-label">Для Вас с любовью</div>
-                <div class="envelope-message">
-                    Если вы захотите поздравить нас особенным образом,<br>
-                    конверт для ваших тёплых пожеланий и сюрпризов всегда открыт с огромной благодарностью.
+            <div class="real-envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="envelope-title">Для Вас с любовью</div>
+                    <div class="envelope-message">
+                        Если вы захотите поздравить нас особенным образом,<br>
+                        конверт для ваших тёплых пожеланий и сюрпризов всегда открыт с огромной благодарностью.
+                    </div>
+                    <div class="envelope-hearts">
+                        <span>❤️</span> <span>♥️</span> <span>❤️</span>
+                    </div>
                 </div>
-                <div class="envelope-heart">
-                    <span>❤️</span> <span>♥️</span> <span>❤️</span>
-                </div>
+                <div class="wax-seal">✦</div>
             </div>
         </section>
 
@@ -1245,6 +1288,7 @@
                 <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
                 <div class="contact-name">Света Латош</div>
                 <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
+                <!-- Телефон гарантированно белый, без подчеркивания -->
                 <div class="contact-phone">+375 29 582 6262</div>
                 <div class="contact-message">Мы будем полностью погружены в этот волшебный день, но Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями.</div>
             </div>
