@@ -28,6 +28,9 @@
             font-weight: 200;
             line-height: 1.8;
             color: var(--white);
+            /* Предотвращаем сжатие при появлении адресной строки */
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
 
         /* ========== КОНВЕРТ (начальный) ========== */
@@ -37,6 +40,8 @@
             left: 0;
             width: 100%;
             height: 100%;
+            /* Используем динамическую высоту */
+            height: 100dvh;
             z-index: 1000;
             background: url('конверт.jpg') no-repeat center center;
             background-size: cover;
@@ -75,6 +80,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            height: 100dvh;
             background: #000000;
             z-index: 999;
             opacity: 0;
@@ -98,6 +104,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            height: 100dvh;
             pointer-events: none;
             z-index: 1001;
             opacity: 0;
@@ -131,14 +138,16 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН ========== */
+        /* ========== ПЕРВЫЙ ЭКРАН: ДИНАМИЧЕСКАЯ ВЫСОТА ========== */
         .first-screen {
             position: relative;
             height: 100vh;
-            height: 100dvh;
+            height: 100dvh; /* Динамическая высота для мобильных */
             width: 100%;
             overflow: hidden;
             background: #000;
+            /* Предотвращаем изменение размера при скролле */
+            min-height: -webkit-fill-available;
         }
         .hero {
             position: absolute;
@@ -279,7 +288,6 @@
 
         /* ========== АДАПТИВНЫЕ ПРАВКИ ДЛЯ БЛОКОВ ========== */
         
-        /* Уменьшаем общие паддинги на мобильных */
         section {
             padding-left: 20px;
             padding-right: 20px;
@@ -1374,6 +1382,19 @@
             const main = document.getElementById('main-content');
             const blackScreen = document.getElementById('black-screen');
             const particlesContainer = document.getElementById('particles');
+
+            // Функция для корректировки высоты при изменении адресной строки
+            function adjustViewportHeight() {
+                const vh = window.innerHeight;
+                document.documentElement.style.setProperty('--vh', `${vh * 0.01}px`);
+            }
+            
+            // Вызываем при загрузке и при ресайзе
+            adjustViewportHeight();
+            window.addEventListener('resize', adjustViewportHeight);
+            window.addEventListener('orientationchange', () => {
+                setTimeout(adjustViewportHeight, 100);
+            });
 
             function createParticles() {
                 particlesContainer.innerHTML = '';
