@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Приглашение: Артур & Таня | Бордовая элегантность</title>
+    <title>Приглашение: Артур & Таня | Элегантность</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --burgundy: #7a1212;
-            --burgundy-light: #9a2a2a;
+            --burgundy: #460100;
+            --burgundy-light: #5a0800;
             --black: #0a0a0a;
             --white: #ffffff;
         }
@@ -116,10 +116,10 @@
 
         .particle {
             position: absolute;
-            background: radial-gradient(circle, rgba(122, 18, 18, 0.95), rgba(140, 30, 30, 0.5), transparent);
+            background: radial-gradient(circle, rgba(70, 1, 0, 0.95), rgba(90, 8, 0, 0.5), transparent);
             border-radius: 50%;
             opacity: 0;
-            box-shadow: 0 0 10px rgba(122, 18, 18, 0.9);
+            box-shadow: 0 0 10px rgba(70, 1, 0, 0.9);
         }
 
         #main-content {
@@ -136,7 +136,7 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН: ИМЕНА ОПУЩЕНЫ ЕЩЁ НА 2px ========== */
+        /* ========== ПЕРВЫЙ ЭКРАН ========== */
         .first-screen {
             position: relative;
             height: 100vh;
@@ -178,7 +178,7 @@
         
         .hero-info {
             position: absolute;
-            bottom: 54px; /* Опущено на 2px (было 56px) */
+            bottom: 54px;
             left: clamp(18px, 6vw, 36px);
             text-align: left;
             z-index: 2;
@@ -240,7 +240,7 @@
 
         @media (max-width: 768px) {
             .hero-info {
-                bottom: 51px; /* Опущено на 2px (было 53px) */
+                bottom: 51px;
                 left: 20px;
             }
             .hero-names {
@@ -255,7 +255,7 @@
         }
         @media (max-width: 480px) {
             .hero-info {
-                bottom: 47px; /* Опущено на 2px (было 49px) */
+                bottom: 47px;
                 left: 16px;
             }
             .hero-names {
@@ -275,7 +275,7 @@
         }
         @media (max-width: 380px) {
             .hero-info {
-                bottom: 44px; /* Опущено на 2px (было 46px) */
+                bottom: 44px;
                 left: 14px;
             }
             .hero-names {
@@ -330,7 +330,7 @@
         .fade-up-block.visible .fade-up-item:nth-child(5) { transition-delay: 0.33s; }
         .fade-up-block.visible .fade-up-item:nth-child(6) { transition-delay: 0.40s; }
 
-        /* ========== ПРИГЛАШЕНИЕ (компактный) ========== */
+        /* ========== ПРИГЛАШЕНИЕ ========== */
         .details {
             display: flex;
             flex-direction: column;
@@ -402,7 +402,7 @@
             }
         }
 
-        /* ========== КАЛЕНДАРЬ (компактный) ========== */
+        /* ========== КАЛЕНДАРЬ ========== */
         .calendar-section {
             width: 100%;
             text-align: center;
@@ -454,7 +454,7 @@
             z-index: 1;
         }
 
-        /* ========== ТАЙМИНГ (компактный) ========== */
+        /* ========== ТАЙМИНГ ========== */
         .timeline-section {
             background-color: #111111;
             padding: 60px 25px;
@@ -501,7 +501,7 @@
             top: 18px;
             bottom: 18px;
             width: 1px;
-            background: rgba(122, 18, 18, 0.3);
+            background: rgba(70, 1, 0, 0.3);
             z-index: 0;
         }
 
@@ -578,7 +578,7 @@
             }
         }
 
-        /* ========== ЛОКАЦИЯ (компактная) ========== */
+        /* ========== ЛОКАЦИЯ ========== */
         .location-section {
             background-color: var(--black);
             padding: 60px 25px;
@@ -652,6 +652,11 @@
             font-weight: 200;
         }
 
+        .map-button:hover {
+            background: var(--burgundy);
+            color: var(--white);
+        }
+
         @media (max-width: 768px) {
             .location-section {
                 padding: 50px 20px;
@@ -663,7 +668,7 @@
             }
         }
 
-        /* ========== ДРЕСС-КОД (компактный) ========== */
+        /* ========== ДРЕСС-КОД ========== */
         .dresscode-section {
             background-color: #111111;
             padding: 60px 0 0 0;
@@ -749,7 +754,7 @@
             }
         }
 
-        /* ========== ПОДАРКИ (компактные) ========== */
+        /* ========== ПОДАРКИ ========== */
         .gifts-section {
             background-color: var(--black);
             padding: 60px 25px 35px 25px;
@@ -821,7 +826,7 @@
             }
         }
 
-        /* ========== ВАЖНО (компактный) ========== */
+        /* ========== ВАЖНО ========== */
         .important-section {
             background-color: #111111;
             padding: 60px 25px;
@@ -842,7 +847,7 @@
         .important-box {
             max-width: 480px;
             margin: 0 auto;
-            border: 1px solid rgba(122, 18, 18, 0.4);
+            border: 1px solid rgba(70, 1, 0, 0.4);
             padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
             background: #0a0a0a;
         }
@@ -864,7 +869,7 @@
             }
         }
 
-        /* ========== АНКЕТА (компактная) ========== */
+        /* ========== АНКЕТА ========== */
         .survey-section {
             background-color: var(--black);
             padding: 60px 25px;
@@ -937,7 +942,7 @@
         .form-select {
             cursor: pointer;
             appearance: none;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237a1212' d='M6 8L0 0h12z'/%3E%3C/svg%3E") no-repeat right center;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23460100' d='M6 8L0 0h12z'/%3E%3C/svg%3E") no-repeat right center;
             padding-right: 30px;
         }
 
@@ -1002,7 +1007,7 @@
             position: relative;
             display: block;
             text-align: center;
-            color: black;
+            color: white;
             font-size: 9px;
             line-height: 1;
         }
@@ -1025,7 +1030,7 @@
 
         .submit-button:hover {
             background: var(--burgundy);
-            color: var(--black);
+            color: var(--white);
         }
 
         @media (max-width: 768px) {
@@ -1064,7 +1069,7 @@
             padding: 0 clamp(18px, 5vw, 25px);
         }
 
-        /* ========== КОНТАКТЫ (компактные) ========== */
+        /* ========== КОНТАКТЫ ========== */
         .contact-section {
             background-color: #111111;
             padding: 60px 25px;
