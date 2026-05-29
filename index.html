@@ -402,7 +402,7 @@
             }
         }
 
-        /* ========== КАЛЕНДАРЬ УВЕЛИЧЕННЫЙ ========== */
+        /* ========== КАЛЕНДАРЬ (без выделения) ========== */
         .calendar-section {
             width: 100%;
             text-align: center;
@@ -415,8 +415,7 @@
             text-transform: uppercase;
             color: var(--burgundy);
             margin-bottom: 22px;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(90, 0, 0, 0.5);
+            font-weight: 300;
         }
 
         .calendar-grid {
@@ -430,7 +429,7 @@
 
         .day-header {
             color: var(--burgundy);
-            font-weight: 400;
+            font-weight: 300;
             font-size: clamp(9px, 2.5vw, 11px);
             padding-bottom: 7px;
         }
@@ -453,7 +452,6 @@
             border: 1.5px solid var(--burgundy);
             border-radius: 50%;
             z-index: 1;
-            box-shadow: 0 0 10px rgba(90, 0, 0, 0.5);
         }
 
         /* ========== ТАЙМИНГ ========== */
@@ -757,7 +755,7 @@
             }
         }
 
-        /* ========== ПОДАРКИ ========== */
+        /* ========== ПОДАРКИ (выровнены) ========== */
         .gifts-section {
             background-color: var(--black);
             padding: 60px 25px 35px 25px;
@@ -777,6 +775,7 @@
 
         .gift-card {
             max-width: 480px;
+            width: 100%;
             margin: 0 auto;
             background: #111111;
             padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
@@ -789,6 +788,7 @@
             font-size: clamp(12px, 3vw, 13px);
             line-height: 1.7;
             font-weight: 200;
+            text-align: left;
         }
 
         .envelope-image-wrapper {
@@ -849,11 +849,13 @@
 
         .important-box {
             max-width: 480px;
+            width: 100%;
             margin: 0 auto;
             border: 1px solid var(--burgundy);
             opacity: 0.7;
             padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
             background: #0a0a0a;
+            text-align: left;
         }
 
         .important-box p {
@@ -888,7 +890,7 @@
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 15px;
         }
 
         .survey-subtitle {
@@ -896,14 +898,15 @@
             font-weight: 300;
             letter-spacing: 1px;
             margin-bottom: 35px;
-            opacity: 0.7;
+            opacity: 0.8;
             max-width: 400px;
-            line-height: 1.6;
+            line-height: 1.8;
+            text-align: center;
         }
 
         .survey-subtitle strong {
             font-weight: 300;
-            color: var(--burgundy);
+            color: var(--white);
         }
 
         .survey-form {
@@ -1349,7 +1352,7 @@
 
             <section class="survey-section fade-up-block">
                 <h2 class="survey-title fade-up-item">Анкета гостя</h2>
-                <p class="survey-subtitle fade-up-item">Пожалуйста, подтвердите своё присутствие до <strong>1 августа 2026</strong></p>
+                <p class="survey-subtitle fade-up-item">Пожалуйста, подтвердите своё присутствие<br>до <strong>1 августа 2026</strong></p>
                 <form class="survey-form" id="guest-survey">
                     <div class="form-group fade-up-item"><label class="form-label">Имя и Фамилия</label><input type="text" class="form-input" placeholder="Введите ваше имя и фамилию" required></div>
                     <div class="form-group fade-up-item"><label class="form-label">Сможете ли присутствовать?</label><div class="radio-group"><label class="radio-item"><input type="radio" name="attendance" value="yes" required><span>Да, с радостью</span></label><label class="radio-item"><input type="radio" name="attendance" value="no"><span>К сожалению, нет</span></label><label class="radio-item"><input type="radio" name="attendance" value="maybe"><span>Пока не уверен(а)</span></label></div></div>
