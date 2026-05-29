@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Приглашение: Артур & Таня | Бордовая элегантность</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -131,18 +131,13 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ БЛОК: ФОТО + ЛЕНТА КАК ЕДИНОЕ ЦЕЛОЕ ========== */
-        .hero-block {
+        /* ========== ПЕРВЫЙ ЭКРАН: ВСЕГДА 100vh, АДАПТИВНО ========== */
+        .first-screen {
             position: relative;
+            height: 100vh;
             width: 100%;
-            background: var(--black);
-        }
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 100%; /* Квадратное соотношение, но с responsive */
             overflow: hidden;
+            background: #000;
         }
         .hero {
             position: absolute;
@@ -173,8 +168,8 @@
         }
         .hero-info {
             position: absolute;
-            bottom: 25px;
-            left: 20px;
+            bottom: 75px;
+            left: 24px;
             text-align: left;
             z-index: 2;
             background: transparent;
@@ -184,104 +179,82 @@
             border: none;
         }
         .hero-names {
-            font-size: clamp(26px, 7vw, 48px);
+            font-size: clamp(24px, 7vw, 48px);
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #0a0a0a;
             text-shadow: none;
         }
         .hero-date {
-            font-size: 16px;
-            letter-spacing: 5px;
+            font-size: clamp(14px, 4vw, 18px);
+            letter-spacing: 4px;
             font-weight: 500;
             color: var(--burgundy);
             text-shadow: none;
         }
 
-        /* Лента — сразу под фото, без зазора, как единое целое */
+        /* Лента — прижата к низу первого экрана */
         .invitation-ribbon {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
             background: var(--burgundy);
             padding: 12px 0;
             overflow: hidden;
             white-space: nowrap;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+            z-index: 3;
+            box-shadow: 0 -3px 12px rgba(0,0,0,0.3);
         }
         .invitation-ribbon-content {
             display: inline-block;
             animation: scrollRibbon 22s linear infinite;
             font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
-            letter-spacing: 5px;
+            font-size: clamp(11px, 4vw, 15px);
+            letter-spacing: 3px;
             font-weight: 300;
             color: var(--white);
             text-transform: uppercase;
         }
         .invitation-ribbon-content span {
             display: inline-block;
-            padding: 0 35px;
+            padding: 0 clamp(12px, 4vw, 35px);
         }
         @keyframes scrollRibbon {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Адаптивная высота фото — чтобы блок помещался на один экран */
-        @media (min-width: 768px) {
-            .hero-container {
-                height: 85vh;
-                padding-bottom: 0;
-            }
-        }
-        @media (max-width: 767px) {
-            .hero-container {
-                height: 70vh;
-                padding-bottom: 0;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero-container {
-                height: 65vh;
+        /* Адаптивная настройка отступов для разных экранов */
+        @media (max-width: 768px) {
+            .hero-info {
+                bottom: 70px;
+                left: 20px;
             }
             .hero-names {
-                font-size: 22px;
                 letter-spacing: 2px;
             }
             .hero-date {
-                font-size: 14px;
-                letter-spacing: 4px;
+                letter-spacing: 3px;
             }
+        }
+        @media (max-width: 480px) {
             .hero-info {
-                bottom: 20px;
+                bottom: 65px;
                 left: 16px;
+            }
+            .hero-names {
+                letter-spacing: 1.5px;
             }
             .invitation-ribbon {
                 padding: 10px 0;
             }
-            .invitation-ribbon-content {
-                font-size: 12px;
-                letter-spacing: 3px;
-            }
-            .invitation-ribbon-content span {
-                padding: 0 20px;
-            }
         }
         @media (max-width: 380px) {
-            .hero-container {
-                height: 60vh;
-            }
-            .hero-names {
-                font-size: 20px;
-                letter-spacing: 1.5px;
-            }
-            .hero-date {
-                font-size: 12px;
-                letter-spacing: 3px;
-            }
             .hero-info {
-                bottom: 15px;
+                bottom: 60px;
                 left: 14px;
             }
         }
@@ -1095,14 +1068,12 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <!-- ПЕРВЫЙ БЛОК: фото и лента как единое целое, без разрывов -->
-        <div class="hero-block">
-            <div class="hero-container">
-                <div class="hero">
-                    <div class="hero-info">
-                        <h1 class="hero-names">Артур & Таня</h1>
-                        <div class="hero-date">26.08.2026</div>
-                    </div>
+        <!-- ПЕРВЫЙ ЭКРАН: фото на всю высоту, лента внизу, имена чуть выше -->
+        <div class="first-screen">
+            <div class="hero">
+                <div class="hero-info">
+                    <h1 class="hero-names">Артур & Таня</h1>
+                    <div class="hero-date">26.08.2026</div>
                 </div>
             </div>
             <div class="invitation-ribbon">
