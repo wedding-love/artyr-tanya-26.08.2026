@@ -131,9 +131,15 @@
             opacity: 1;
         }
 
-        /* ========== ГЕРОЙ — увеличенное фото 95vh ========== */
+        /* ========== ГЕРОЙ — увеличенное фото 100vh с лентой внизу ========== */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
         .hero {
-            height: 95vh;
+            height: 100%;
             display: flex;
             position: relative;
             opacity: 0;
@@ -161,7 +167,7 @@
 
         .hero-info {
             position: absolute;
-            bottom: 40px;
+            bottom: 80px;
             left: 30px;
             text-align: left;
             z-index: 2;
@@ -190,14 +196,18 @@
             text-shadow: none;
         }
 
-        /* ========== ЛЕНТА "ВЫ ПРИГЛАШЕНЫ" ========== */
+        /* Лента привязана к низу первого экрана — видна сразу */
         .invitation-ribbon {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             background: var(--burgundy);
             padding: 12px 0;
             overflow: hidden;
             white-space: nowrap;
-            width: 100%;
-            position: relative;
+            z-index: 3;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
         .invitation-ribbon-content {
             display: inline-block;
@@ -218,16 +228,33 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ========== ОСТАЛЬНОЙ КОНТЕНТ ========== */
-        .rest-content {
+        /* ========== АНИМАЦИИ ДЛЯ ВСЕХ БЛОКОВ ПРИ ПРОКРУТКЕ ========== */
+        .fade-up-block {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease-out;
         }
-        .rest-content.visible {
+        .fade-up-block.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Задержки для вложенных элементов */
+        .fade-up-item {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-up-block.visible .fade-up-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-up-block.visible .fade-up-item:nth-child(1) { transition-delay: 0.05s; }
+        .fade-up-block.visible .fade-up-item:nth-child(2) { transition-delay: 0.15s; }
+        .fade-up-block.visible .fade-up-item:nth-child(3) { transition-delay: 0.25s; }
+        .fade-up-block.visible .fade-up-item:nth-child(4) { transition-delay: 0.35s; }
+        .fade-up-block.visible .fade-up-item:nth-child(5) { transition-delay: 0.45s; }
+        .fade-up-block.visible .fade-up-item:nth-child(6) { transition-delay: 0.55s; }
 
         /* ========== ПРИГЛАШЕНИЕ ========== */
         .details {
@@ -384,16 +411,8 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: all 0.6s ease-out;
             position: relative;
             z-index: 1;
-        }
-
-        .timeline-item.show {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         .timeline-icon-wrapper {
@@ -649,9 +668,6 @@
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 0;
-            filter: none;
-            box-shadow: none;
         }
 
         @media (min-width: 768px) {
@@ -693,7 +709,7 @@
             font-size: 13px;
         }
 
-        /* ========== АНКЕТА ГОСТЯ (обновленный текст) ========== */
+        /* ========== АНКЕТА ГОСТЯ ========== */
         .survey-section {
             background-color: var(--black);
             padding: 70px 25px;
@@ -878,7 +894,7 @@
             padding: 0 25px;
         }
 
-        /* ========== КОНТАКТЫ (обновленный текст) ========== */
+        /* ========== КОНТАКТЫ ========== */
         .contact-section {
             background-color: #111111;
             padding: 70px 25px;
@@ -932,8 +948,6 @@
             margin-bottom: 18px;
             color: #ffffff !important;
             text-decoration: none !important;
-            background: transparent;
-            display: inline-block;
         }
         a.contact-phone, .contact-phone a, .contact-phone:any-link {
             color: #ffffff !important;
@@ -1019,8 +1033,7 @@
             .important-box { padding: 28px 22px; }
             .contact-card { padding: 28px 22px; }
             .countdown-number { font-size: 28px; padding: 6px 10px; }
-            .hero { height: 92vh; }
-            .hero-info { bottom: 30px; left: 20px; }
+            .hero-info { bottom: 70px; left: 20px; }
             .invitation-ribbon-content { font-size: 13px; letter-spacing: 3px; }
             .invitation-ribbon-content span { padding: 0 20px; }
         }
@@ -1028,10 +1041,9 @@
         @media (max-width: 480px) {
             .hero-names { font-size: 22px; letter-spacing: 2px; }
             .hero-date { font-size: 14px; letter-spacing: 4px; }
-            .hero { height: 90vh; }
-            .gallery-track img { width: 58vw; max-width: 170px; aspect-ratio: 2 / 2.8; }
+            .hero-info { bottom: 65px; left: 16px; }
+            .gallery-track img { width: 58vw; max-width: 170px; }
             .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
-            .hero-info { bottom: 25px; left: 16px; }
             .invitation-ribbon-content { font-size: 11px; letter-spacing: 2px; }
             .invitation-ribbon-content span { padding: 0 15px; }
         }
@@ -1048,32 +1060,35 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <section class="hero">
-            <div class="hero-info">
-                <h1 class="hero-names">Артур & Таня</h1>
-                <div class="hero-date">26.08.2026</div>
+        <!-- Первый экран: фото + лента внизу -->
+        <div class="hero-section">
+            <div class="hero">
+                <div class="hero-info">
+                    <h1 class="hero-names">Артур & Таня</h1>
+                    <div class="hero-date">26.08.2026</div>
+                </div>
             </div>
-        </section>
-
-        <div class="invitation-ribbon">
-            <div class="invitation-ribbon-content">
-                <span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span>
+            <div class="invitation-ribbon">
+                <div class="invitation-ribbon-content">
+                    <span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span>
+                </div>
             </div>
         </div>
 
+        <!-- Контент с анимацией появления -->
         <div class="rest-content" id="restContent">
-            <section class="details">
-                <div class="invitation-greeting-line"></div>
-                <h2 class="invitation-greeting-text">Дорогие гости</h2>
-                <div class="invitation-greeting-line"></div>
-                <p class="invitation-text">
+            <section class="details fade-up-block">
+                <div class="invitation-greeting-line fade-up-item"></div>
+                <h2 class="invitation-greeting-text fade-up-item">Дорогие гости</h2>
+                <div class="invitation-greeting-line fade-up-item"></div>
+                <p class="invitation-text fade-up-item">
                     Мы рады пригласить вас разделить с нами самый важный и счастливый момент нашей жизни. Пусть этот день станет началом новой прекрасной главы, которую мы хотим открыть в окружении самых близких и дорогих нам людей.
                 </p>
-                <p class="invitation-text" style="margin-top: 12px;">
+                <p class="invitation-text fade-up-item" style="margin-top: 12px;">
                     Ваше присутствие сделает наш праздник по-настоящему особенным и незабываемым.
                 </p>
-                <div class="invitation-divider"></div>
-                <div class="calendar-section">
+                <div class="invitation-divider fade-up-item"></div>
+                <div class="calendar-section fade-up-item">
                     <div class="month-name">Август 2026</div>
                     <div class="calendar-grid">
                         <div class="day-header">ПН</div><div class="day-header">ВТ</div><div class="day-header">СР</div>
@@ -1088,21 +1103,21 @@
                 </div>
             </section>
 
-            <section class="timeline-section">
-                <h2 class="timeline-title">Программа дня</h2>
+            <section class="timeline-section fade-up-block">
+                <h2 class="timeline-title fade-up-item">Программа дня</h2>
                 <div class="timeline-container">
-                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 15v6M17 3H7L5 9c0 1.1.9 2 2 2 1.1 0 2-.9 2-2 0 1.1.9 2 2 2s2-.9 2-2c0 1.1.9 2 2 2 1.1 0 2-.9 2-2l-2-6z"/></svg></div><div class="timeline-content"><div class="timeline-time">14:30</div><div class="timeline-desc">Сбор гостей</div><div class="timeline-note">Приветственное шампанское</div></div></div>
-                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><circle cx="16" cy="16" r="6"/><path d="M13 11l3 3"/></svg></div><div class="timeline-content"><div class="timeline-time">15:00</div><div class="timeline-desc">Церемония</div><div class="timeline-note">На которой мы скажем "Да"</div></div></div>
-                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">15:30</div><div class="timeline-desc">Время для общих памятных фото</div></div></div>
-                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18v-4H3v4zM3 16h18V8H3v8zM3 8h18V3H3v5z"/><line x1="8" y1="8" x2="8" y2="12"/><line x1="12" y1="8" x2="12" y2="12"/></svg></div><div class="timeline-content"><div class="timeline-time">16:00</div><div class="timeline-desc">Фуршет</div><div class="timeline-note">Время на знакомства и общение</div></div></div>
-                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">17:00</div><div class="timeline-desc">Начало праздничного банкета</div></div></div>
-                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17V4l12-2v13"/><circle cx="6" cy="17" r="3"/><circle cx="18" cy="15" r="3"/></svg></div><div class="timeline-content"><div class="timeline-time">23:00</div><div class="timeline-desc">Завершение вечера</div></div></div>
+                    <div class="timeline-item fade-up-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 15v6M17 3H7L5 9c0 1.1.9 2 2 2 1.1 0 2-.9 2-2 0 1.1.9 2 2 2s2-.9 2-2c0 1.1.9 2 2 2 1.1 0 2-.9 2-2l-2-6z"/></svg></div><div class="timeline-content"><div class="timeline-time">14:30</div><div class="timeline-desc">Сбор гостей</div><div class="timeline-note">Приветственное шампанское</div></div></div>
+                    <div class="timeline-item fade-up-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><circle cx="16" cy="16" r="6"/><path d="M13 11l3 3"/></svg></div><div class="timeline-content"><div class="timeline-time">15:00</div><div class="timeline-desc">Церемония</div><div class="timeline-note">На которой мы скажем "Да"</div></div></div>
+                    <div class="timeline-item fade-up-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">15:30</div><div class="timeline-desc">Время для общих памятных фото</div></div></div>
+                    <div class="timeline-item fade-up-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18v-4H3v4zM3 16h18V8H3v8zM3 8h18V3H3v5z"/><line x1="8" y1="8" x2="8" y2="12"/><line x1="12" y1="8" x2="12" y2="12"/></svg></div><div class="timeline-content"><div class="timeline-time">16:00</div><div class="timeline-desc">Фуршет</div><div class="timeline-note">Время на знакомства и общение</div></div></div>
+                    <div class="timeline-item fade-up-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">17:00</div><div class="timeline-desc">Начало праздничного банкета</div></div></div>
+                    <div class="timeline-item fade-up-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17V4l12-2v13"/><circle cx="6" cy="17" r="3"/><circle cx="18" cy="15" r="3"/></svg></div><div class="timeline-content"><div class="timeline-time">23:00</div><div class="timeline-desc">Завершение вечера</div></div></div>
                 </div>
             </section>
 
-            <section class="location-section">
-                <h2 class="location-title">Локация</h2>
-                <div class="location-container">
+            <section class="location-section fade-up-block">
+                <h2 class="location-title fade-up-item">Локация</h2>
+                <div class="location-container fade-up-item">
                     <div class="location-image-wrapper"><div class="location-image"></div></div>
                     <div class="location-name">Шато Мари</div>
                     <div class="location-address">г. Гродно, ул. Домбровского, 58</div>
@@ -1110,11 +1125,11 @@
                 </div>
             </section>
 
-            <section class="dresscode-section">
-                <div class="dresscode-line1">Дресс-код</div>
-                <div class="dresscode-line2">TOTAL BLACK</div>
-                <p class="dresscode-text">Мы очень стараемся сделать праздник красивым и стильным!<br>Будем очень рады, если вы поддержите дресс-код нашей свадьбы и выберете чёрный цвет для своих нарядов.</p>
-                <div class="gallery-scroll">
+            <section class="dresscode-section fade-up-block">
+                <div class="dresscode-line1 fade-up-item">Дресс-код</div>
+                <div class="dresscode-line2 fade-up-item">TOTAL BLACK</div>
+                <p class="dresscode-text fade-up-item">Мы очень стараемся сделать праздник красивым и стильным!<br>Будем очень рады, если вы поддержите дресс-код нашей свадьбы и выберете чёрный цвет для своих нарядов.</p>
+                <div class="gallery-scroll fade-up-item">
                     <div class="gallery-track">
                         <img src="1.jpg" alt="black style 1">
                         <img src="2.jpg" alt="black style 2">
@@ -1124,72 +1139,48 @@
                 </div>
             </section>
 
-            <section class="gifts-section">
-                <h2 class="gifts-title">Подарки и пожелания</h2>
-                <div class="gift-card">
+            <section class="gifts-section fade-up-block">
+                <h2 class="gifts-title fade-up-item">Подарки и пожелания</h2>
+                <div class="gift-card fade-up-item">
                     <p>Можете не переживать по поводу подарка, мы будем благодарны вашим пожеланиям в конвертах.</p>
                     <p>Многие считают важной деталью дарить на свадьбу цветы, но у нас дома не найдется столько ваз! Поэтому, если вы вдруг собирались покупать букет – мы будем рады любой альтернативе на память (конечно же, по желанию).</p>
                     <p>И помните, самый важный и ценный подарок для нас – ваше присутствие!</p>
                 </div>
-                <div class="envelope-image-wrapper">
+                <div class="envelope-image-wrapper fade-up-item">
                     <div class="envelope-photo">
                         <img src="123.png" alt="Конверт для пожеланий">
                     </div>
                 </div>
             </section>
 
-            <section class="important-section">
-                <h2 class="important-title">Важно</h2>
-                <div class="important-box">
+            <section class="important-section fade-up-block">
+                <h2 class="important-title fade-up-item">Важно</h2>
+                <div class="important-box fade-up-item">
                     <p>Дорогие гости, вы знаете, что мы очень любим детей, но нашу свадьбу мы видим в формате «для взрослых» : с бокалом игристого и не детскими развлечениями!</p>
                     <p style="margin-top: 18px;">Пожалуйста, оставьте малышей в надежных руках на время нашего торжества. Ведь любому родителю иногда следует отдыхать, забыв на время о повседневных заботах.</p>
                 </div>
             </section>
 
-            <section class="survey-section">
-                <h2 class="survey-title">Анкета гостя</h2>
-                <p class="survey-subtitle">Пожалуйста, подтвердите своё присутствие до <strong>1 августа 2026</strong></p>
+            <section class="survey-section fade-up-block">
+                <h2 class="survey-title fade-up-item">Анкета гостя</h2>
+                <p class="survey-subtitle fade-up-item">Пожалуйста, подтвердите своё присутствие до <strong>1 августа 2026</strong></p>
                 <form class="survey-form" id="guest-survey">
-                    <div class="form-group">
-                        <label class="form-label">Имя и Фамилия</label>
-                        <input type="text" class="form-input" placeholder="Введите ваше имя и фамилию" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Сможете ли присутствовать?</label>
-                        <div class="radio-group">
-                            <label class="radio-item"><input type="radio" name="attendance" value="yes" required><span>Да, с радостью</span></label>
-                            <label class="radio-item"><input type="radio" name="attendance" value="no"><span>К сожалению, нет</span></label>
-                            <label class="radio-item"><input type="radio" name="attendance" value="maybe"><span>Пока не уверен(а)</span></label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Предпочтения по напиткам</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item"><input type="checkbox" value="игристое"> Игристое</label>
-                            <label class="checkbox-item"><input type="checkbox" value="вино белое"> Вино белое</label>
-                            <label class="checkbox-item"><input type="checkbox" value="вино красное"> Вино красное</label>
-                            <label class="checkbox-item"><input type="checkbox" value="коньяк"> Коньяк</label>
-                            <label class="checkbox-item"><input type="checkbox" value="виски"> Виски</label>
-                            <label class="checkbox-item"><input type="checkbox" value="водка"> Водка</label>
-                            <label class="checkbox-item"><input type="checkbox" value="не пью"> Не пью алкоголь</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Аллергии / Особые пожелания</label>
-                        <textarea class="form-textarea" placeholder="Укажите, если у вас есть аллергия на какие-либо продукты"></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Отправить</button>
+                    <div class="form-group fade-up-item"><label class="form-label">Имя и Фамилия</label><input type="text" class="form-input" placeholder="Введите ваше имя и фамилию" required></div>
+                    <div class="form-group fade-up-item"><label class="form-label">Сможете ли присутствовать?</label><div class="radio-group"><label class="radio-item"><input type="radio" name="attendance" value="yes" required><span>Да, с радостью</span></label><label class="radio-item"><input type="radio" name="attendance" value="no"><span>К сожалению, нет</span></label><label class="radio-item"><input type="radio" name="attendance" value="maybe"><span>Пока не уверен(а)</span></label></div></div>
+                    <div class="form-group fade-up-item"><label class="form-label">Предпочтения по напиткам</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" value="игристое"> Игристое</label><label class="checkbox-item"><input type="checkbox" value="вино белое"> Вино белое</label><label class="checkbox-item"><input type="checkbox" value="вино красное"> Вино красное</label><label class="checkbox-item"><input type="checkbox" value="коньяк"> Коньяк</label><label class="checkbox-item"><input type="checkbox" value="виски"> Виски</label><label class="checkbox-item"><input type="checkbox" value="водка"> Водка</label><label class="checkbox-item"><input type="checkbox" value="не пью"> Не пью алкоголь</label></div></div>
+                    <div class="form-group fade-up-item"><label class="form-label">Аллергии / Особые пожелания</label><textarea class="form-textarea" placeholder="Укажите, если у вас есть аллергия на какие-либо продукты"></textarea></div>
+                    <button type="submit" class="submit-button fade-up-item">Отправить</button>
                 </form>
             </section>
 
-            <div class="infinite-ribbon">
+            <div class="infinite-ribbon fade-up-block">
                 <div class="infinite-ribbon-content">
                     <span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span>
                 </div>
             </div>
 
-            <section class="contact-section">
-                <div class="contact-card">
+            <section class="contact-section fade-up-block">
+                <div class="contact-card fade-up-item">
                     <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
                     <div class="contact-name">Света Латош</div>
                     <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
@@ -1198,9 +1189,9 @@
                 </div>
             </section>
 
-            <section class="countdown-section">
-                <h2 class="countdown-title">До свадьбы осталось</h2>
-                <div class="countdown-timer">
+            <section class="countdown-section fade-up-block">
+                <h2 class="countdown-title fade-up-item">До свадьбы осталось</h2>
+                <div class="countdown-timer fade-up-item">
                     <div><span class="countdown-number" id="days">00</span><span class="countdown-label">дней</span></div>
                     <div><span class="countdown-number" id="hours">00</span><span class="countdown-label">часов</span></div>
                     <div><span class="countdown-number" id="minutes">00</span><span class="countdown-label">минут</span></div>
@@ -1268,7 +1259,8 @@
             });
             obs.observe(main, {attributes: true});
 
-            const restContent = document.getElementById('restContent');
+            // Анимация появления блоков при прокрутке
+            const fadeBlocks = document.querySelectorAll('.fade-up-block');
             const appearObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
@@ -1276,19 +1268,8 @@
                         appearObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
-            if(restContent) appearObserver.observe(restContent);
-
-            const timelineObs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.querySelectorAll('.timeline-item').forEach((item, idx) => setTimeout(() => item.classList.add('show'), idx*130));
-                        timelineObs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-            const timelineSec = document.querySelector('.timeline-section');
-            if(timelineSec) timelineObs.observe(timelineSec);
+            }, { threshold: 0.15 });
+            fadeBlocks.forEach(block => appearObserver.observe(block));
 
             document.getElementById('guest-survey')?.addEventListener('submit', (e) => {
                 e.preventDefault();
