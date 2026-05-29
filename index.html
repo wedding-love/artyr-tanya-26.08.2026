@@ -131,9 +131,9 @@
             opacity: 1;
         }
 
-        /* ========== ГЕРОЙ — фото увеличено до 95vh, но имена видны ========== */
+        /* ========== ГЕРОЙ — увеличенное фото 95vh ========== */
         .hero {
-            height: 95vh; /* максимально большое фото, но не на весь экран чтобы текст не ушел */
+            height: 95vh;
             display: flex;
             position: relative;
             opacity: 0;
@@ -159,7 +159,6 @@
             transform: scale(1);
         }
 
-        /* Полностью прозрачный блок — никаких фонов, теней, рамок */
         .hero-info {
             position: absolute;
             bottom: 40px;
@@ -191,6 +190,45 @@
             text-shadow: none;
         }
 
+        /* ========== ЛЕНТА "ВЫ ПРИГЛАШЕНЫ" ========== */
+        .invitation-ribbon {
+            background: var(--burgundy);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            position: relative;
+        }
+        .invitation-ribbon-content {
+            display: inline-block;
+            animation: scrollRibbon 22s linear infinite;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            letter-spacing: 5px;
+            font-weight: 300;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+        .invitation-ribbon-content span {
+            display: inline-block;
+            padding: 0 35px;
+        }
+        @keyframes scrollRibbon {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ========== ОСТАЛЬНОЙ КОНТЕНТ ========== */
+        .rest-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .rest-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ========== ПРИГЛАШЕНИЕ ========== */
         .details {
             display: flex;
@@ -200,14 +238,6 @@
             padding: 70px 25px;
             max-width: 650px;
             margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .details.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .invitation-greeting-line {
@@ -419,14 +449,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .location-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .location-title {
@@ -506,14 +528,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .dresscode-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .dresscode-line1 {
@@ -582,7 +596,7 @@
             transform: scale(1.02);
         }
 
-        /* ========== ПОДАРКИ ========== */
+        /* ========== ПОДАРКИ И КОНВЕРТ ========== */
         .gifts-section {
             background-color: var(--black);
             padding: 70px 25px 40px 25px;
@@ -590,14 +604,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .gifts-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .gifts-title {
@@ -624,108 +630,35 @@
             font-weight: 200;
         }
 
-        /* ========== РЕАЛИСТИЧНЫЙ КОНВЕРТ — без текста и смайлов, только визуал ========== */
-        .envelope-gift-section {
-            background-color: var(--black);
-            padding: 30px 25px 80px 25px;
+        .envelope-image-wrapper {
+            margin-top: 35px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        .envelope-gift-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .real-envelope {
-            position: relative;
-            max-width: 380px;
             width: 100%;
-            background: #6b1111;
-            background: linear-gradient(145deg, #7a1212 0%, #560e0e 100%);
-            border-radius: 6px 6px 12px 12px;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
-            transition: transform 0.2s ease;
         }
-        .real-envelope:hover {
-            transform: translateY(-4px);
+        .envelope-photo {
+            max-width: 220px;
+            width: 70%;
+            background: transparent;
+            transition: transform 0.3s ease;
         }
-        /* Клапан конверта (треугольная верхняя часть) */
-        .envelope-flap {
-            position: relative;
-            background: #8b1e1e;
-            background: linear-gradient(135deg, #872020, #5f0f0f);
-            height: 110px;
-            border-radius: 6px 6px 0 0;
-            clip-path: polygon(0% 0%, 100% 0%, 50% 72%);
-            box-shadow: inset 0 -5px 6px rgba(0,0,0,0.25);
-            cursor: default;
+        .envelope-photo:hover {
+            transform: scale(1.02);
         }
-        /* Имитация скотча на клапане */
-        .envelope-flap::before {
-            content: '';
-            position: absolute;
-            top: 22px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 26px;
-            background: rgba(200, 175, 120, 0.7);
-            background: linear-gradient(135deg, rgba(190,160,110,0.75), rgba(230,205,150,0.85), rgba(170,140,90,0.7));
-            border-radius: 4px 4px 20px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,245,200,0.6);
-            backdrop-filter: blur(2px);
+        .envelope-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0;
+            filter: none;
+            box-shadow: none;
         }
-        /* Дополнительная полоска для реалистичности скотча */
-        .envelope-flap::after {
-            content: '';
-            position: absolute;
-            top: 32px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 52%;
-            height: 8px;
-            background: rgba(240,220,140,0.65);
-            border-radius: 3px;
-            filter: blur(2px);
+
+        @media (min-width: 768px) {
+            .envelope-photo { max-width: 240px; }
         }
-        /* Нижняя часть конверта с эффектом бумаги */
-        .envelope-body {
-            padding: 28px 25px 35px 25px;
-            text-align: center;
-            min-height: 160px;
-            background: radial-gradient(ellipse at 30% 40%, rgba(100,20,20,0.3), rgba(0,0,0,0.1));
-        }
-        /* Восковая печать внизу справа */
-        .wax-seal {
-            position: absolute;
-            bottom: -18px;
-            right: 28px;
-            width: 48px;
-            height: 48px;
-            background: radial-gradient(circle at 35% 35%, #bc5a2c, #6b2e0a);
-            border-radius: 50%;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,200,100,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            color: #e6c394;
-            font-weight: bold;
-            font-family: serif;
-        }
-        /* Дополнительные линии сгибов для реализма */
-        .real-envelope::after {
-            content: '';
-            position: absolute;
-            bottom: 18px;
-            left: 20px;
-            right: 20px;
-            height: 1px;
-            background: rgba(0,0,0,0.2);
-            box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+        @media (max-width: 480px) {
+            .envelope-photo { max-width: 180px; }
         }
 
         /* ========== ВАЖНО ========== */
@@ -736,14 +669,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .important-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .important-title {
@@ -768,7 +693,7 @@
             font-size: 13px;
         }
 
-        /* ========== АНКЕТА ========== */
+        /* ========== АНКЕТА ГОСТЯ (обновленный текст) ========== */
         .survey-section {
             background-color: var(--black);
             padding: 70px 25px;
@@ -776,14 +701,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .survey-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .survey-title {
@@ -795,12 +712,12 @@
         }
 
         .survey-subtitle {
-            font-size: 13px;
-            font-weight: 200;
-            letter-spacing: 2px;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
             margin-bottom: 40px;
-            opacity: 0.6;
-            max-width: 380px;
+            opacity: 0.8;
+            max-width: 400px;
             line-height: 1.7;
         }
 
@@ -960,12 +877,8 @@
             display: inline-block;
             padding: 0 25px;
         }
-        @keyframes scrollRibbon {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
 
-        /* ========== КОНТАКТЫ (телефон БЕЛЫЙ, без подчеркивания) ========== */
+        /* ========== КОНТАКТЫ (обновленный текст) ========== */
         .contact-section {
             background-color: #111111;
             padding: 70px 25px;
@@ -973,14 +886,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .contact-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .contact-card {
@@ -1037,10 +942,10 @@
 
         .contact-message {
             font-size: 12px;
-            opacity: 0.7;
-            font-style: italic;
+            opacity: 0.8;
+            font-style: normal;
             margin-top: 12px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* ========== ТАЙМЕР ========== */
@@ -1051,15 +956,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
             position: relative;
-        }
-
-        .countdown-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .countdown-section::before {
@@ -1124,7 +1021,8 @@
             .countdown-number { font-size: 28px; padding: 6px 10px; }
             .hero { height: 92vh; }
             .hero-info { bottom: 30px; left: 20px; }
-            .real-envelope { max-width: 340px; }
+            .invitation-ribbon-content { font-size: 13px; letter-spacing: 3px; }
+            .invitation-ribbon-content span { padding: 0 20px; }
         }
 
         @media (max-width: 480px) {
@@ -1134,8 +1032,8 @@
             .gallery-track img { width: 58vw; max-width: 170px; aspect-ratio: 2 / 2.8; }
             .dresscode-line2 { font-size: 20px; letter-spacing: 5px; }
             .hero-info { bottom: 25px; left: 16px; }
-            .real-envelope { max-width: 300px; }
-            .envelope-flap { height: 90px; }
+            .invitation-ribbon-content { font-size: 11px; letter-spacing: 2px; }
+            .invitation-ribbon-content span { padding: 0 15px; }
         }
     </style>
 </head>
@@ -1157,131 +1055,159 @@
             </div>
         </section>
 
-        <section class="details">
-            <div class="invitation-greeting-line"></div>
-            <h2 class="invitation-greeting-text">Дорогие гости</h2>
-            <div class="invitation-greeting-line"></div>
-            <p class="invitation-text">
-                Мы рады пригласить вас разделить с нами самый важный и счастливый момент нашей жизни. Пусть этот день станет началом новой прекрасной главы, которую мы хотим открыть в окружении самых близких и дорогих нам людей.
-            </p>
-            <p class="invitation-text" style="margin-top: 12px;">
-                Ваше присутствие сделает наш праздник по-настоящему особенным и незабываемым.
-            </p>
-            <div class="invitation-divider"></div>
-            <div class="calendar-section">
-                <div class="month-name">Август 2026</div>
-                <div class="calendar-grid">
-                    <div class="day-header">ПН</div><div class="day-header">ВТ</div><div class="day-header">СР</div>
-                    <div class="day-header">ЧТ</div><div class="day-header">ПТ</div><div class="day-header">СБ</div><div class="day-header">ВС</div>
-                    <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day">1</div><div class="day">2</div>
-                    <div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div>
-                    <div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div>
-                    <div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div>
-                    <div class="day">24</div><div class="day">25</div><div class="day wedding-day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div>
-                    <div class="day">31</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="timeline-section">
-            <h2 class="timeline-title">Программа дня</h2>
-            <div class="timeline-container">
-                <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 15v6M17 3H7L5 9c0 1.1.9 2 2 2 1.1 0 2-.9 2-2 0 1.1.9 2 2 2s2-.9 2-2c0 1.1.9 2 2 2 1.1 0 2-.9 2-2l-2-6z"/></svg></div><div class="timeline-content"><div class="timeline-time">14:30</div><div class="timeline-desc">Сбор гостей</div><div class="timeline-note">Приветственное шампанское</div></div></div>
-                <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><circle cx="16" cy="16" r="6"/><path d="M13 11l3 3"/></svg></div><div class="timeline-content"><div class="timeline-time">15:00</div><div class="timeline-desc">Церемония</div><div class="timeline-note">На которой мы скажем "Да"</div></div></div>
-                <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">15:30</div><div class="timeline-desc">Время для общих памятных фото</div></div></div>
-                <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18v-4H3v4zM3 16h18V8H3v8zM3 8h18V3H3v5z"/><line x1="8" y1="8" x2="8" y2="12"/><line x1="12" y1="8" x2="12" y2="12"/></svg></div><div class="timeline-content"><div class="timeline-time">16:00</div><div class="timeline-desc">Фуршет</div><div class="timeline-note">Время на знакомства и общение</div></div></div>
-                <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">17:00</div><div class="timeline-desc">Начало праздничного банкета</div></div></div>
-                <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17V4l12-2v13"/><circle cx="6" cy="17" r="3"/><circle cx="18" cy="15" r="3"/></svg></div><div class="timeline-content"><div class="timeline-time">23:00</div><div class="timeline-desc">Завершение вечера</div></div></div>
-            </div>
-        </section>
-
-        <section class="location-section">
-            <h2 class="location-title">Локация</h2>
-            <div class="location-container">
-                <div class="location-image-wrapper"><div class="location-image"></div></div>
-                <div class="location-name">Шато Мари</div>
-                <div class="location-address">г. Гродно, ул. Домбровского, 58</div>
-                <a href="https://yandex.ru/maps/?text=Гродно+Домбровского+58" target="_blank" class="map-button">Открыть карту</a>
-            </div>
-        </section>
-
-        <section class="dresscode-section">
-            <div class="dresscode-line1">Дресс-код</div>
-            <div class="dresscode-line2">TOTAL BLACK</div>
-            <p class="dresscode-text">Мы очень стараемся сделать праздник красивым и стильным!<br>Будем очень рады, если вы поддержите дресс-код нашей свадьбы и выберете чёрный цвет для своих нарядов.</p>
-            <div class="gallery-scroll">
-                <div class="gallery-track">
-                    <img src="1.jpg" alt="black style 1">
-                    <img src="2.jpg" alt="black style 2">
-                    <img src="3.jpg" alt="black style 3">
-                    <img src="4.jpg" alt="black style 4">
-                </div>
-            </div>
-        </section>
-
-        <section class="gifts-section">
-            <h2 class="gifts-title">Подарки и пожелания</h2>
-            <div class="gift-card">
-                <p>Можете не переживать по поводу подарка, мы будем благодарны вашим пожеланиям в конвертах.</p>
-                <p>Многие считают важной деталью дарить на свадьбу цветы, но у нас дома не найдется столько ваз! Поэтому, если вы вдруг собирались покупать букет – мы будем рады любой альтернативе на память (конечно же, по желанию).</p>
-                <p>И помните, самый важный и ценный подарок для нас – ваше присутствие!</p>
-            </div>
-        </section>
-
-        <!-- РЕАЛИСТИЧНЫЙ БОРДОВЫЙ КОНВЕРТ: без текста, без смайлов, только визуал -->
-        <section class="envelope-gift-section">
-            <div class="real-envelope">
-                <div class="envelope-flap"></div>
-                <div class="envelope-body"></div>
-                <div class="wax-seal">⚜</div>
-            </div>
-        </section>
-
-        <section class="important-section">
-            <h2 class="important-title">Важно</h2>
-            <div class="important-box">
-                <p>Дорогие гости, вы знаете, что мы очень любим детей, но нашу свадьбу мы видим в формате «для взрослых» : с бокалом игристого и не детскими развлечениями!</p>
-                <p style="margin-top: 18px;">Пожалуйста, оставьте малышей в надежных руках на время нашего торжества. Ведь любому родителю иногда следует отдыхать, забыв на время о повседневных заботах.</p>
-            </div>
-        </section>
-
-        <section class="survey-section">
-            <h2 class="survey-title">Анкета гостя</h2>
-            <p class="survey-subtitle">Подтвердить своё присутствие до <strong style="font-weight: 200;">1 августа 2026</strong>!</p>
-            <form class="survey-form" id="guest-survey">
-                <div class="form-group"><label class="form-label">Имя и Фамилия</label><input type="text" class="form-input" placeholder="Введите ваше полное имя" required></div>
-                <div class="form-group"><label class="form-label">Сможете ли присутствовать?</label><div class="radio-group"><label class="radio-item"><input type="radio" name="attendance" value="yes" required><span>Да, с радостью</span></label><label class="radio-item"><input type="radio" name="attendance" value="no"><span>К сожалению, нет</span></label><label class="radio-item"><input type="radio" name="attendance" value="maybe"><span>Пока не уверен(а)</span></label></div></div>
-                <div class="form-group"><label class="form-label">Предпочтения по напиткам</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" value="игристое"> Игристое</label><label class="checkbox-item"><input type="checkbox" value="вино белое"> Вино белое</label><label class="checkbox-item"><input type="checkbox" value="вино красное"> Вино красное</label><label class="checkbox-item"><input type="checkbox" value="коньяк"> Коньяк</label><label class="checkbox-item"><input type="checkbox" value="виски"> Виски</label><label class="checkbox-item"><input type="checkbox" value="водка"> Водка</label><label class="checkbox-item"><input type="checkbox" value="не пью"> Не пью алкоголь</label></div></div>
-                <div class="form-group"><label class="form-label">Аллергии / Особые пожелания</label><textarea class="form-textarea" placeholder="Укажите, если у вас есть аллергия на какие-либо продукты"></textarea></div>
-                <button type="submit" class="submit-button">Отправить</button>
-            </form>
-        </section>
-
-        <div class="infinite-ribbon">
-            <div class="infinite-ribbon-content">
-                <span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span>
+        <div class="invitation-ribbon">
+            <div class="invitation-ribbon-content">
+                <span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span><span>ВЫ ПРИГЛАШЕНЫ</span>
             </div>
         </div>
 
-        <section class="contact-section">
-            <div class="contact-card">
-                <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
-                <div class="contact-name">Света Латош</div>
-                <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
-                <div class="contact-phone">+375 29 582 6262</div>
-                <div class="contact-message">Мы будем полностью погружены в этот волшебный день, но Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями.</div>
-            </div>
-        </section>
+        <div class="rest-content" id="restContent">
+            <section class="details">
+                <div class="invitation-greeting-line"></div>
+                <h2 class="invitation-greeting-text">Дорогие гости</h2>
+                <div class="invitation-greeting-line"></div>
+                <p class="invitation-text">
+                    Мы рады пригласить вас разделить с нами самый важный и счастливый момент нашей жизни. Пусть этот день станет началом новой прекрасной главы, которую мы хотим открыть в окружении самых близких и дорогих нам людей.
+                </p>
+                <p class="invitation-text" style="margin-top: 12px;">
+                    Ваше присутствие сделает наш праздник по-настоящему особенным и незабываемым.
+                </p>
+                <div class="invitation-divider"></div>
+                <div class="calendar-section">
+                    <div class="month-name">Август 2026</div>
+                    <div class="calendar-grid">
+                        <div class="day-header">ПН</div><div class="day-header">ВТ</div><div class="day-header">СР</div>
+                        <div class="day-header">ЧТ</div><div class="day-header">ПТ</div><div class="day-header">СБ</div><div class="day-header">ВС</div>
+                        <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day">1</div><div class="day">2</div>
+                        <div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div>
+                        <div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div>
+                        <div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div>
+                        <div class="day">24</div><div class="day">25</div><div class="day wedding-day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div>
+                        <div class="day">31</div>
+                    </div>
+                </div>
+            </section>
 
-        <section class="countdown-section">
-            <h2 class="countdown-title">До свадьбы осталось</h2>
-            <div class="countdown-timer">
-                <div><span class="countdown-number" id="days">00</span><span class="countdown-label">дней</span></div>
-                <div><span class="countdown-number" id="hours">00</span><span class="countdown-label">часов</span></div>
-                <div><span class="countdown-number" id="minutes">00</span><span class="countdown-label">минут</span></div>
-                <div><span class="countdown-number" id="seconds">00</span><span class="countdown-label">секунд</span></div>
+            <section class="timeline-section">
+                <h2 class="timeline-title">Программа дня</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 15v6M17 3H7L5 9c0 1.1.9 2 2 2 1.1 0 2-.9 2-2 0 1.1.9 2 2 2s2-.9 2-2c0 1.1.9 2 2 2 1.1 0 2-.9 2-2l-2-6z"/></svg></div><div class="timeline-content"><div class="timeline-time">14:30</div><div class="timeline-desc">Сбор гостей</div><div class="timeline-note">Приветственное шампанское</div></div></div>
+                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><circle cx="16" cy="16" r="6"/><path d="M13 11l3 3"/></svg></div><div class="timeline-content"><div class="timeline-time">15:00</div><div class="timeline-desc">Церемония</div><div class="timeline-note">На которой мы скажем "Да"</div></div></div>
+                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">15:30</div><div class="timeline-desc">Время для общих памятных фото</div></div></div>
+                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18v-4H3v4zM3 16h18V8H3v8zM3 8h18V3H3v5z"/><line x1="8" y1="8" x2="8" y2="12"/><line x1="12" y1="8" x2="12" y2="12"/></svg></div><div class="timeline-content"><div class="timeline-time">16:00</div><div class="timeline-desc">Фуршет</div><div class="timeline-note">Время на знакомства и общение</div></div></div>
+                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l2 6H4l2-6z"/><circle cx="12" cy="15" r="4"/><path d="M4 9h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/></svg></div><div class="timeline-content"><div class="timeline-time">17:00</div><div class="timeline-desc">Начало праздничного банкета</div></div></div>
+                    <div class="timeline-item"><div class="timeline-icon-wrapper"><svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17V4l12-2v13"/><circle cx="6" cy="17" r="3"/><circle cx="18" cy="15" r="3"/></svg></div><div class="timeline-content"><div class="timeline-time">23:00</div><div class="timeline-desc">Завершение вечера</div></div></div>
+                </div>
+            </section>
+
+            <section class="location-section">
+                <h2 class="location-title">Локация</h2>
+                <div class="location-container">
+                    <div class="location-image-wrapper"><div class="location-image"></div></div>
+                    <div class="location-name">Шато Мари</div>
+                    <div class="location-address">г. Гродно, ул. Домбровского, 58</div>
+                    <a href="https://yandex.ru/maps/?text=Гродно+Домбровского+58" target="_blank" class="map-button">Открыть карту</a>
+                </div>
+            </section>
+
+            <section class="dresscode-section">
+                <div class="dresscode-line1">Дресс-код</div>
+                <div class="dresscode-line2">TOTAL BLACK</div>
+                <p class="dresscode-text">Мы очень стараемся сделать праздник красивым и стильным!<br>Будем очень рады, если вы поддержите дресс-код нашей свадьбы и выберете чёрный цвет для своих нарядов.</p>
+                <div class="gallery-scroll">
+                    <div class="gallery-track">
+                        <img src="1.jpg" alt="black style 1">
+                        <img src="2.jpg" alt="black style 2">
+                        <img src="3.jpg" alt="black style 3">
+                        <img src="4.jpg" alt="black style 4">
+                    </div>
+                </div>
+            </section>
+
+            <section class="gifts-section">
+                <h2 class="gifts-title">Подарки и пожелания</h2>
+                <div class="gift-card">
+                    <p>Можете не переживать по поводу подарка, мы будем благодарны вашим пожеланиям в конвертах.</p>
+                    <p>Многие считают важной деталью дарить на свадьбу цветы, но у нас дома не найдется столько ваз! Поэтому, если вы вдруг собирались покупать букет – мы будем рады любой альтернативе на память (конечно же, по желанию).</p>
+                    <p>И помните, самый важный и ценный подарок для нас – ваше присутствие!</p>
+                </div>
+                <div class="envelope-image-wrapper">
+                    <div class="envelope-photo">
+                        <img src="123.png" alt="Конверт для пожеланий">
+                    </div>
+                </div>
+            </section>
+
+            <section class="important-section">
+                <h2 class="important-title">Важно</h2>
+                <div class="important-box">
+                    <p>Дорогие гости, вы знаете, что мы очень любим детей, но нашу свадьбу мы видим в формате «для взрослых» : с бокалом игристого и не детскими развлечениями!</p>
+                    <p style="margin-top: 18px;">Пожалуйста, оставьте малышей в надежных руках на время нашего торжества. Ведь любому родителю иногда следует отдыхать, забыв на время о повседневных заботах.</p>
+                </div>
+            </section>
+
+            <section class="survey-section">
+                <h2 class="survey-title">Анкета гостя</h2>
+                <p class="survey-subtitle">Пожалуйста, подтвердите своё присутствие до <strong>1 августа 2026</strong></p>
+                <form class="survey-form" id="guest-survey">
+                    <div class="form-group">
+                        <label class="form-label">Имя и Фамилия</label>
+                        <input type="text" class="form-input" placeholder="Введите ваше имя и фамилию" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Сможете ли присутствовать?</label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="attendance" value="yes" required><span>Да, с радостью</span></label>
+                            <label class="radio-item"><input type="radio" name="attendance" value="no"><span>К сожалению, нет</span></label>
+                            <label class="radio-item"><input type="radio" name="attendance" value="maybe"><span>Пока не уверен(а)</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Предпочтения по напиткам</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="checkbox" value="игристое"> Игристое</label>
+                            <label class="checkbox-item"><input type="checkbox" value="вино белое"> Вино белое</label>
+                            <label class="checkbox-item"><input type="checkbox" value="вино красное"> Вино красное</label>
+                            <label class="checkbox-item"><input type="checkbox" value="коньяк"> Коньяк</label>
+                            <label class="checkbox-item"><input type="checkbox" value="виски"> Виски</label>
+                            <label class="checkbox-item"><input type="checkbox" value="водка"> Водка</label>
+                            <label class="checkbox-item"><input type="checkbox" value="не пью"> Не пью алкоголь</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Аллергии / Особые пожелания</label>
+                        <textarea class="form-textarea" placeholder="Укажите, если у вас есть аллергия на какие-либо продукты"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Отправить</button>
+                </form>
+            </section>
+
+            <div class="infinite-ribbon">
+                <div class="infinite-ribbon-content">
+                    <span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span>
+                </div>
             </div>
-        </section>
+
+            <section class="contact-section">
+                <div class="contact-card">
+                    <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
+                    <div class="contact-name">Света Латош</div>
+                    <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
+                    <div class="contact-phone">+375 29 582 6262</div>
+                    <div class="contact-message">Мы будем полностью погружены в этот волшебный день, но наш свадебный организатор Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями.</div>
+                </div>
+            </section>
+
+            <section class="countdown-section">
+                <h2 class="countdown-title">До свадьбы осталось</h2>
+                <div class="countdown-timer">
+                    <div><span class="countdown-number" id="days">00</span><span class="countdown-label">дней</span></div>
+                    <div><span class="countdown-number" id="hours">00</span><span class="countdown-label">часов</span></div>
+                    <div><span class="countdown-number" id="minutes">00</span><span class="countdown-label">минут</span></div>
+                    <div><span class="countdown-number" id="seconds">00</span><span class="countdown-label">секунд</span></div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <script>
@@ -1334,25 +1260,30 @@
             });
 
             const hero = document.querySelector('.hero');
-            const details = document.querySelector('.details');
             const obs = new MutationObserver(() => {
                 if(main.classList.contains('visible')) {
                     setTimeout(() => hero.classList.add('visible'), 200);
-                    setTimeout(() => details.classList.add('visible'), 400);
                     obs.disconnect();
                 }
             });
             obs.observe(main, {attributes: true});
 
+            const restContent = document.getElementById('restContent');
             const appearObserver = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-            }, { threshold: 0.15 });
-            document.querySelectorAll('.location-section, .dresscode-section, .gifts-section, .important-section, .survey-section, .contact-section, .countdown-section, .envelope-gift-section').forEach(el => appearObserver.observe(el));
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        appearObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            if(restContent) appearObserver.observe(restContent);
 
             const timelineObs = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
                         entry.target.querySelectorAll('.timeline-item').forEach((item, idx) => setTimeout(() => item.classList.add('show'), idx*130));
+                        timelineObs.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.2 });
