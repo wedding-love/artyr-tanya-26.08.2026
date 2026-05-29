@@ -28,7 +28,6 @@
             font-weight: 200;
             line-height: 1.8;
             color: var(--white);
-            /* Предотвращаем сжатие при появлении адресной строки */
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
         }
@@ -40,7 +39,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Используем динамическую высоту */
             height: 100dvh;
             z-index: 1000;
             background: url('конверт.jpg') no-repeat center center;
@@ -138,15 +136,14 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН: ДИНАМИЧЕСКАЯ ВЫСОТА ========== */
+        /* ========== ПЕРВЫЙ ЭКРАН: ИМЕНА ОПУЩЕНЫ ЕЩЁ НА 2px ========== */
         .first-screen {
             position: relative;
             height: 100vh;
-            height: 100dvh; /* Динамическая высота для мобильных */
+            height: 100dvh;
             width: 100%;
             overflow: hidden;
             background: #000;
-            /* Предотвращаем изменение размера при скролле */
             min-height: -webkit-fill-available;
         }
         .hero {
@@ -181,7 +178,7 @@
         
         .hero-info {
             position: absolute;
-            bottom: 56px;
+            bottom: 54px; /* Опущено на 2px (было 56px) */
             left: clamp(18px, 6vw, 36px);
             text-align: left;
             z-index: 2;
@@ -243,7 +240,7 @@
 
         @media (max-width: 768px) {
             .hero-info {
-                bottom: 53px;
+                bottom: 51px; /* Опущено на 2px (было 53px) */
                 left: 20px;
             }
             .hero-names {
@@ -258,7 +255,7 @@
         }
         @media (max-width: 480px) {
             .hero-info {
-                bottom: 49px;
+                bottom: 47px; /* Опущено на 2px (было 49px) */
                 left: 16px;
             }
             .hero-names {
@@ -278,7 +275,7 @@
         }
         @media (max-width: 380px) {
             .hero-info {
-                bottom: 46px;
+                bottom: 44px; /* Опущено на 2px (было 46px) */
                 left: 14px;
             }
             .hero-names {
@@ -1383,13 +1380,11 @@
             const blackScreen = document.getElementById('black-screen');
             const particlesContainer = document.getElementById('particles');
 
-            // Функция для корректировки высоты при изменении адресной строки
             function adjustViewportHeight() {
                 const vh = window.innerHeight;
                 document.documentElement.style.setProperty('--vh', `${vh * 0.01}px`);
             }
             
-            // Вызываем при загрузке и при ресайзе
             adjustViewportHeight();
             window.addEventListener('resize', adjustViewportHeight);
             window.addEventListener('orientationchange', () => {
