@@ -1059,53 +1059,6 @@
             }
         }
 
-        /* ========== ФИНАЛЬНАЯ ФРАЗА ========== */
-        .final-section {
-            background-color: #111111;
-            padding: 60px 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .final-waiting {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 6vw, 3rem);
-            color: var(--white);
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .final-names {
-            font-size: clamp(18px, 5vw, 26px);
-            font-weight: 300;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--burgundy);
-        }
-
-        .final-divider {
-            width: 50px;
-            height: 1px;
-            background: var(--burgundy);
-            margin: 20px auto;
-            opacity: 0.6;
-        }
-
-        @media (max-width: 768px) {
-            .final-section {
-                padding: 50px 20px;
-            }
-        }
-        @media (max-width: 480px) {
-            .final-section {
-                padding: 40px 16px;
-            }
-        }
-
         /* ========== БЕСКОНЕЧНАЯ ЛЕНТА ========== */
         .infinite-ribbon {
             background: var(--burgundy);
@@ -1128,9 +1081,9 @@
             padding: 0 clamp(18px, 5vw, 25px);
         }
 
-        /* ========== КОНТАКТЫ (переписанный блок) ========== */
+        /* ========== КОНТАКТЫ (как было) ========== */
         .contact-section {
-            background-color: var(--black);
+            background-color: #111111;
             padding: 60px 25px;
             display: flex;
             flex-direction: column;
@@ -1138,78 +1091,49 @@
             text-align: center;
         }
 
-        .contact-title {
-            font-size: clamp(16px, 4vw, 18px);
-            letter-spacing: 5px;
-            font-weight: 300;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            color: var(--white);
-        }
-
         .contact-card {
-            background: transparent;
-            padding: 0;
+            background: #1a1a1a;
+            padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
             max-width: 450px;
             width: 100%;
-            border: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            border-bottom: 2px solid var(--burgundy);
         }
 
-        .contact-person {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .contact-role {
+        .contact-intro {
             font-size: clamp(11px, 2.5vw, 12px);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-weight: 200;
+            margin-bottom: 15px;
             opacity: 0.7;
-            text-transform: uppercase;
         }
 
         .contact-name {
             font-size: clamp(22px, 6vw, 28px);
             font-weight: 300;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
             color: var(--burgundy);
-            text-shadow: 0 0 20px rgba(90, 0, 0, 0.4);
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            padding: 20px 0;
-            border-top: 1px solid rgba(90, 0, 0, 0.4);
-            border-bottom: 1px solid rgba(90, 0, 0, 0.4);
-            width: 100%;
+            text-shadow: 0 0 15px rgba(90, 0, 0, 0.4);
         }
 
         .contact-instagram {
             color: var(--white);
-            font-size: clamp(14px, 3.5vw, 16px);
+            font-size: clamp(15px, 4vw, 17px);
             text-decoration: none;
-            letter-spacing: 2px;
+            display: inline-block;
+            margin: 8px 0;
             opacity: 0.8;
-            transition: all 0.3s ease;
         }
         .contact-instagram:hover {
             opacity: 1;
-            color: var(--burgundy);
+            text-decoration: underline;
         }
 
         .contact-phone {
-            font-size: clamp(16px, 4vw, 18px);
-            letter-spacing: 2px;
+            font-size: clamp(17px, 4.5vw, 19px);
+            letter-spacing: 1px;
             font-weight: 200;
+            margin-bottom: 15px;
             color: #ffffff !important;
             text-decoration: none !important;
         }
@@ -1218,12 +1142,12 @@
             text-decoration: none !important;
         }
 
-        .contact-note {
+        .contact-message {
             font-size: clamp(11px, 2.5vw, 12px);
-            opacity: 0.7;
-            font-style: italic;
-            line-height: 1.6;
-            max-width: 350px;
+            opacity: 0.8;
+            font-style: normal;
+            margin-top: 10px;
+            line-height: 1.5;
         }
 
         @media (max-width: 768px) {
@@ -1237,10 +1161,10 @@
             }
         }
 
-        /* ========== ТАЙМЕР ========== */
+        /* ========== ТАЙМЕР + ФИНАЛЬНАЯ ФРАЗА ========== */
         .countdown-section {
-            background-color: #111111;
-            padding: 60px 25px;
+            background-color: var(--black);
+            padding: 60px 25px 40px 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1296,14 +1220,52 @@
             opacity: 0.5;
         }
 
+        .final-message {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .final-waiting {
+            font-size: clamp(14px, 3.5vw, 16px);
+            font-weight: 200;
+            letter-spacing: 2px;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        .final-names {
+            font-size: clamp(18px, 5vw, 24px);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--burgundy);
+        }
+
+        .final-line {
+            width: 50px;
+            height: 1px;
+            background: var(--burgundy);
+            opacity: 0.6;
+            margin: 5px 0;
+        }
+
         @media (max-width: 768px) {
             .countdown-section {
-                padding: 50px 20px;
+                padding: 50px 20px 35px 20px;
+            }
+            .final-message {
+                margin-top: 40px;
             }
         }
         @media (max-width: 480px) {
             .countdown-section {
-                padding: 40px 16px;
+                padding: 40px 16px 30px 16px;
+            }
+            .final-message {
+                margin-top: 35px;
             }
         }
 
@@ -1438,32 +1400,19 @@
                 </form>
             </section>
 
-            <!-- ФИНАЛЬНАЯ ФРАЗА -->
-            <section class="final-section fade-up-block">
-                <div class="final-divider fade-up-item"></div>
-                <h2 class="final-waiting fade-up-item">Мы вас очень ждём!</h2>
-                <p class="final-names fade-up-item">Ваши Артур & Таня</p>
-            </section>
-
             <div class="infinite-ribbon fade-up-block">
                 <div class="infinite-ribbon-content">
                     <span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span>
                 </div>
             </div>
 
-            <!-- КОНТАКТЫ (переписанный блок) -->
             <section class="contact-section fade-up-block">
-                <h2 class="contact-title fade-up-item">Контакты</h2>
                 <div class="contact-card fade-up-item">
-                    <div class="contact-person">
-                        <div class="contact-role">Свадебный организатор</div>
-                        <div class="contact-name">Света Латош</div>
-                    </div>
-                    <div class="contact-links">
-                        <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
-                        <div class="contact-phone">+375 29 582 6262</div>
-                    </div>
-                    <div class="contact-note">Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями</div>
+                    <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
+                    <div class="contact-name">Света Латош</div>
+                    <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
+                    <div class="contact-phone">+375 29 582 6262</div>
+                    <div class="contact-message">Мы будем полностью погружены в этот волшебный день, но наш свадебный организатор Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями.</div>
                 </div>
             </section>
 
@@ -1474,6 +1423,11 @@
                     <div><span class="countdown-number" id="hours">00</span><span class="countdown-label">часов</span></div>
                     <div><span class="countdown-number" id="minutes">00</span><span class="countdown-label">минут</span></div>
                     <div><span class="countdown-number" id="seconds">00</span><span class="countdown-label">секунд</span></div>
+                </div>
+                <div class="final-message fade-up-item">
+                    <div class="final-line"></div>
+                    <p class="final-waiting">Мы вас очень ждём!</p>
+                    <p class="final-names">Ваши Артур & Таня</p>
                 </div>
             </section>
         </div>
