@@ -131,7 +131,7 @@
             opacity: 1;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН: ИМЕНА ОПУЩЕНЫ НА ПАРУ px ========== */
+        /* ========== ПЕРВЫЙ ЭКРАН: ИМЕНА ОПУЩЕНЫ ЕЩЁ НА 2px ========== */
         .first-screen {
             position: relative;
             height: 100vh;
@@ -170,10 +170,10 @@
             transform: scale(1);
         }
         
-        /* Блок с именами — опущен на 2px ниже */
+        /* Блок с именами — опущен ещё на 2px */
         .hero-info {
             position: absolute;
-            bottom: 58px; /* Было 60px, опустили на 2px */
+            bottom: 56px; /* Было 58px, опустили на 2px */
             left: clamp(18px, 6vw, 36px);
             text-align: left;
             z-index: 2;
@@ -237,7 +237,7 @@
         /* Адаптив для мобильных */
         @media (max-width: 768px) {
             .hero-info {
-                bottom: 55px; /* Было 57px, опустили на 2px */
+                bottom: 53px; /* Было 55px, опустили на 2px */
                 left: 20px;
             }
             .hero-names {
@@ -252,7 +252,7 @@
         }
         @media (max-width: 480px) {
             .hero-info {
-                bottom: 51px; /* Было 53px, опустили на 2px */
+                bottom: 49px; /* Было 51px, опустили на 2px */
                 left: 16px;
             }
             .hero-names {
@@ -272,7 +272,7 @@
         }
         @media (max-width: 380px) {
             .hero-info {
-                bottom: 48px; /* Было 50px, опустили на 2px */
+                bottom: 46px; /* Было 48px, опустили на 2px */
                 left: 14px;
             }
             .hero-names {
@@ -1089,7 +1089,7 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <!-- ПЕРВЫЙ ЭКРАН: ИМЕНА ОПУЩЕНЫ НА ПАРУ px -->
+        <!-- ПЕРВЫЙ ЭКРАН: ИМЕНА ОПУЩЕНЫ ЕЩЁ НА 2px -->
         <div class="first-screen">
             <div class="hero">
                 <div class="hero-info">
