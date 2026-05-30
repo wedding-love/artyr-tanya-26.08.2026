@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Приглашение: Артур & Таня | Элегантность</title>
+    <title>Приглашение: Артур & Таня </title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -284,7 +284,6 @@
         }
 
         /* ========== АДАПТИВНЫЕ ПРАВКИ ========== */
-        
         section {
             padding-left: 20px;
             padding-right: 20px;
@@ -350,7 +349,7 @@
 
         .invitation-greeting-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: clamp(2rem, 5.5vw, 2.8rem);
             color: var(--white);
             letter-spacing: 4px;
             font-weight: 300;
@@ -359,7 +358,7 @@
         }
 
         .invitation-text {
-            font-size: clamp(13px, 3.5vw, 14px);
+            font-size: clamp(15px, 4vw, 17px);
             letter-spacing: 0.5px;
             font-weight: 200;
             text-align: center;
@@ -378,30 +377,6 @@
             opacity: 0.8;
         }
 
-        @media (max-width: 768px) {
-            .details {
-                padding: 50px 20px;
-            }
-            .invitation-text {
-                font-size: 12px;
-                line-height: 1.6;
-                margin-top: 15px;
-            }
-        }
-        @media (max-width: 480px) {
-            .details {
-                padding: 40px 16px;
-            }
-            .invitation-text {
-                font-size: 11px;
-                line-height: 1.5;
-                margin-top: 12px;
-            }
-            .invitation-divider {
-                margin: 20px auto;
-            }
-        }
-
         /* ========== КАЛЕНДАРЬ ========== */
         .calendar-section {
             width: 100%;
@@ -410,7 +385,7 @@
         }
 
         .month-name {
-            font-size: clamp(15px, 4.5vw, 20px);
+            font-size: clamp(18px, 5vw, 24px);
             letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--burgundy);
@@ -421,21 +396,21 @@
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: clamp(8px, 2.5vw, 12px);
-            font-size: clamp(11px, 3vw, 13px);
-            max-width: 320px;
+            gap: clamp(10px, 3vw, 16px);
+            font-size: clamp(14px, 4vw, 16px);
+            max-width: 360px;
             margin: 0 auto;
         }
 
         .day-header {
             color: var(--burgundy);
             font-weight: 300;
-            font-size: clamp(9px, 2.5vw, 11px);
+            font-size: clamp(11px, 3vw, 13px);
             padding-bottom: 7px;
         }
 
         .day {
-            padding: clamp(5px, 2vw, 8px) 0;
+            padding: clamp(8px, 2vw, 10px) 0;
             position: relative;
             display: flex;
             justify-content: center;
@@ -447,8 +422,8 @@
         .day.wedding-day::after {
             content: '';
             position: absolute;
-            width: clamp(28px, 7vw, 34px);
-            height: clamp(28px, 7vw, 34px);
+            width: clamp(32px, 8vw, 40px);
+            height: clamp(32px, 8vw, 40px);
             border: 1.5px solid var(--burgundy);
             border-radius: 50%;
             z-index: 1;
@@ -465,7 +440,7 @@
         }
 
         .timeline-title {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
@@ -490,7 +465,7 @@
             max-width: 420px;
             display: flex;
             flex-direction: column;
-            gap: 22px;
+            gap: 28px;
             position: relative;
         }
 
@@ -516,8 +491,8 @@
 
         .timeline-icon-wrapper {
             flex-shrink: 0;
-            width: clamp(38px, 10vw, 44px);
-            height: clamp(38px, 10vw, 44px);
+            width: clamp(44px, 12vw, 52px);
+            height: clamp(44px, 12vw, 52px);
             border-radius: 50%;
             background: var(--black);
             border: 1px solid var(--burgundy);
@@ -527,8 +502,8 @@
         }
 
         .timeline-icon {
-            width: clamp(18px, 5vw, 22px);
-            height: clamp(18px, 5vw, 22px);
+            width: clamp(22px, 6vw, 26px);
+            height: clamp(22px, 6vw, 26px);
             color: var(--burgundy);
         }
 
@@ -539,44 +514,24 @@
 
         .timeline-time {
             font-weight: 300;
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(18px, 4.8vw, 22px);
             letter-spacing: 2px;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             color: var(--white);
         }
 
         .timeline-desc {
-            font-size: clamp(11px, 3vw, 12px);
+            font-size: clamp(14px, 3.5vw, 16px);
             letter-spacing: 1px;
             font-weight: 200;
             text-transform: uppercase;
         }
 
         .timeline-note {
-            font-size: clamp(9px, 2.5vw, 10px);
+            font-size: clamp(11px, 2.8vw, 13px);
             font-weight: 200;
             opacity: 0.5;
-            margin-top: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-section {
-                padding: 50px 20px;
-            }
-            .timeline-container {
-                gap: 18px;
-            }
-        }
-        @media (max-width: 480px) {
-            .timeline-section {
-                padding: 40px 16px;
-            }
-            .timeline-container {
-                gap: 15px;
-            }
-            .timeline-item {
-                gap: 12px;
-            }
+            margin-top: 4px;
         }
 
         /* ========== ЛОКАЦИЯ ========== */
@@ -590,7 +545,7 @@
         }
 
         .location-title {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
@@ -604,7 +559,7 @@
 
         .location-image-wrapper {
             width: 100%;
-            height: clamp(200px, 50vw, 260px);
+            height: clamp(220px, 52vw, 280px);
             border-radius: 4px;
             overflow: hidden;
             margin-bottom: 20px;
@@ -625,15 +580,15 @@
         }
 
         .location-name {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             font-weight: 300;
             letter-spacing: 2px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .location-address {
-            font-size: clamp(12px, 3vw, 14px);
+            font-size: clamp(15px, 4vw, 18px);
             font-weight: 200;
             letter-spacing: 1px;
             opacity: 0.6;
@@ -642,11 +597,11 @@
 
         .map-button {
             display: inline-block;
-            padding: clamp(10px, 2.5vw, 12px) clamp(28px, 8vw, 36px);
+            padding: clamp(12px, 3vw, 14px) clamp(32px, 9vw, 42px);
             border: 1px solid var(--burgundy);
             color: var(--white);
             text-decoration: none;
-            font-size: clamp(10px, 2.5vw, 11px);
+            font-size: clamp(12px, 3vw, 14px);
             letter-spacing: 3px;
             text-transform: uppercase;
             transition: all 0.4s ease;
@@ -656,17 +611,6 @@
         .map-button:hover {
             background: var(--burgundy);
             color: var(--white);
-        }
-
-        @media (max-width: 768px) {
-            .location-section {
-                padding: 50px 20px;
-            }
-        }
-        @media (max-width: 480px) {
-            .location-section {
-                padding: 40px 16px;
-            }
         }
 
         /* ========== ДРЕСС-КОД ========== */
@@ -680,7 +624,7 @@
         }
 
         .dresscode-line1 {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
@@ -688,22 +632,22 @@
         }
 
         .dresscode-line2 {
-            font-size: clamp(22px, 6vw, 26px);
+            font-size: clamp(28px, 7vw, 34px);
             letter-spacing: 6px;
             font-weight: 300;
             text-transform: uppercase;
-            margin: 6px 0 16px;
+            margin: 6px 0 18px;
             color: var(--white);
         }
 
         .dresscode-text {
-            font-size: clamp(12px, 3vw, 13px);
-            max-width: 450px;
-            margin: 0 auto 25px;
+            font-size: clamp(15px, 4vw, 17px);
+            max-width: 480px;
+            margin: 0 auto 28px;
             font-weight: 200;
             letter-spacing: 1px;
-            line-height: 1.6;
-            opacity: 0.7;
+            line-height: 1.7;
+            opacity: 0.8;
             padding: 0 20px;
         }
 
@@ -730,7 +674,7 @@
         }
         .gallery-track img {
             width: 45vw;
-            max-width: 180px;
+            max-width: 200px;
             height: auto;
             aspect-ratio: 2 / 2.8;
             object-fit: cover;
@@ -745,20 +689,10 @@
             transform: scale(1.02);
         }
 
-        @media (max-width: 480px) {
-            .dresscode-section {
-                padding: 40px 0 0 0;
-            }
-            .gallery-track img {
-                width: 40vw;
-                max-width: 150px;
-            }
-        }
-
-        /* ========== ПОДАРКИ ========== */
+        /* ========== ПОДАРКИ И ПОЖЕЛАНИЯ (текст выравнивание как в блоке дресс-код) ========== */
         .gifts-section {
             background-color: var(--black);
-            padding: 60px 25px 35px 25px;
+            padding: 60px 25px 45px 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -766,40 +700,43 @@
         }
 
         .gifts-title {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .gift-card {
-            max-width: 480px;
+            max-width: 540px;
             width: 100%;
             margin: 0 auto;
-            background: #111111;
-            padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
-            border-left: 2px solid var(--burgundy);
-            text-align: left;
+            background: transparent;
+            padding: 20px 0 10px 0;
+            text-align: left;         /* ключевое: выравнивание по левому краю как в dresscode-text */
+            border-left: none;
         }
 
         .gift-card p {
-            margin-bottom: 14px;
-            font-size: clamp(12px, 3vw, 13px);
-            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: clamp(16px, 4.2vw, 18px);
+            line-height: 1.75;
             font-weight: 200;
             text-align: left;
+            letter-spacing: 0.3px;
+            color: var(--white);
+            opacity: 0.88;
         }
 
         .envelope-image-wrapper {
-            margin-top: 30px;
+            margin-top: 25px;
             display: flex;
             justify-content: center;
             width: 100%;
         }
         .envelope-photo {
-            max-width: 200px;
-            width: 65%;
+            max-width: 220px;
+            width: 60%;
             background: transparent;
             transition: transform 0.3s ease;
         }
@@ -812,24 +749,7 @@
             display: block;
         }
 
-        @media (max-width: 768px) {
-            .gifts-section {
-                padding: 50px 20px 30px 20px;
-            }
-            .envelope-photo {
-                max-width: 180px;
-            }
-        }
-        @media (max-width: 480px) {
-            .gifts-section {
-                padding: 40px 16px 25px 16px;
-            }
-            .envelope-photo {
-                max-width: 160px;
-            }
-        }
-
-        /* ========== ВАЖНО ========== */
+        /* ========== ВАЖНО (аналогичное выравнивание) ========== */
         .important-section {
             background-color: #111111;
             padding: 60px 25px;
@@ -840,42 +760,35 @@
         }
 
         .important-title {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .important-box {
-            max-width: 480px;
+            max-width: 540px;
             width: 100%;
             margin: 0 auto;
-            border: 1px solid var(--burgundy);
-            opacity: 0.7;
-            padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
-            background: #0a0a0a;
+            border: none;
+            opacity: 1;
+            padding: 0;
+            background: transparent;
             text-align: left;
         }
 
         .important-box p {
             font-weight: 200;
-            line-height: 1.7;
-            font-size: clamp(12px, 3vw, 13px);
+            line-height: 1.75;
+            font-size: clamp(16px, 4.2vw, 18px);
+            text-align: left;
+            margin-bottom: 18px;
+            color: var(--white);
+            opacity: 0.88;
         }
 
-        @media (max-width: 768px) {
-            .important-section {
-                padding: 50px 20px;
-            }
-        }
-        @media (max-width: 480px) {
-            .important-section {
-                padding: 40px 16px;
-            }
-        }
-
-        /* ========== АНКЕТА ========== */
+        /* ========== АНКЕТА (текст формы — увеличенный шрифт, выравнивание по левому краю) ========== */
         .survey-section {
             background-color: var(--black);
             padding: 60px 25px;
@@ -886,20 +799,20 @@
         }
 
         .survey-title {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .survey-subtitle {
-            font-size: clamp(12px, 3vw, 14px);
+            font-size: clamp(15px, 4vw, 18px);
             font-weight: 300;
             letter-spacing: 1px;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             opacity: 0.8;
-            max-width: 400px;
+            max-width: 460px;
             line-height: 1.8;
             text-align: center;
         }
@@ -911,10 +824,10 @@
 
         .survey-form {
             width: 100%;
-            max-width: 460px;
+            max-width: 520px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 28px;
         }
 
         .form-group {
@@ -924,22 +837,22 @@
         }
 
         .form-label {
-            font-size: clamp(9px, 2.5vw, 10px);
+            font-size: clamp(12px, 3vw, 14px);
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--burgundy);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 500;
         }
 
         .form-input, .form-select, .form-textarea {
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.25);
+            padding: 12px 0;
             color: var(--white);
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(13px, 3.5vw, 14px);
+            font-size: clamp(15px, 4vw, 18px);
             font-weight: 200;
             letter-spacing: 1px;
             transition: border-color 0.3s ease;
@@ -954,46 +867,47 @@
         .form-select {
             cursor: pointer;
             appearance: none;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235a0000' d='M6 8L0 0h12z'/%3E%3C/svg%3E") no-repeat right center;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 12 8'%3E%3Cpath fill='%235a0000' d='M6 8L0 0h12z'/%3E%3C/svg%3E") no-repeat right center;
             padding-right: 30px;
         }
 
         .form-textarea {
             resize: vertical;
-            min-height: 70px;
+            min-height: 90px;
             border: 1px solid rgba(255,255,255,0.2);
-            padding: 10px;
+            padding: 12px;
             border-radius: 2px;
+            font-size: clamp(15px, 4vw, 18px);
         }
 
         .checkbox-group, .radio-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 4px;
+            gap: 14px;
+            margin-top: 8px;
         }
 
         @media (min-width: 640px) {
             .checkbox-group, .radio-group {
                 flex-direction: row;
                 flex-wrap: wrap;
-                gap: 14px;
+                gap: 20px;
             }
         }
 
         .radio-item, .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 7px;
+            gap: 10px;
             cursor: pointer;
-            font-size: clamp(12px, 3vw, 13px);
+            font-size: clamp(14px, 3.8vw, 17px);
         }
 
         .radio-item input, .checkbox-item input {
             appearance: none;
-            width: 15px;
-            height: 15px;
-            border: 1px solid rgba(255,255,255,0.3);
+            width: 18px;
+            height: 18px;
+            border: 1px solid rgba(255,255,255,0.4);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1006,7 +920,7 @@
         }
 
         .checkbox-item input {
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         .checkbox-item input:checked {
@@ -1020,7 +934,7 @@
             display: block;
             text-align: center;
             color: white;
-            font-size: 9px;
+            font-size: 11px;
             line-height: 1;
         }
 
@@ -1028,14 +942,14 @@
             background: transparent;
             border: 1px solid var(--burgundy);
             color: var(--white);
-            padding: clamp(12px, 3vw, 14px) clamp(35px, 10vw, 45px);
+            padding: clamp(14px, 3.5vw, 18px) clamp(40px, 12vw, 56px);
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(10px, 2.5vw, 11px);
-            letter-spacing: 3px;
+            font-size: clamp(12px, 3vw, 14px);
+            letter-spacing: 4px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s ease;
-            margin-top: 8px;
+            margin-top: 12px;
             font-weight: 300;
             align-self: center;
         }
@@ -1045,24 +959,10 @@
             color: var(--white);
         }
 
-        @media (max-width: 768px) {
-            .survey-section {
-                padding: 50px 20px;
-            }
-        }
-        @media (max-width: 480px) {
-            .survey-section {
-                padding: 40px 16px;
-            }
-            .survey-form {
-                gap: 16px;
-            }
-        }
-
         /* ========== БЕСКОНЕЧНАЯ ЛЕНТА ========== */
         .infinite-ribbon {
             background: var(--burgundy);
-            padding: 5px 0;
+            padding: 6px 0;
             overflow: hidden;
             white-space: nowrap;
             width: 100%;
@@ -1071,17 +971,17 @@
             display: inline-block;
             animation: scrollRibbon 20s linear infinite;
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(11px, 3vw, 13px);
+            font-size: clamp(14px, 3.5vw, 16px);
             letter-spacing: 2px;
             font-weight: 300;
             color: var(--white);
         }
         .infinite-ribbon-content span {
             display: inline-block;
-            padding: 0 clamp(18px, 5vw, 25px);
+            padding: 0 clamp(20px, 6vw, 30px);
         }
 
-        /* ========== КОНТАКТЫ (как было) ========== */
+        /* ========== КОНТАКТЫ ========== */
         .contact-section {
             background-color: #111111;
             padding: 60px 25px;
@@ -1093,35 +993,35 @@
 
         .contact-card {
             background: #1a1a1a;
-            padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
-            max-width: 450px;
+            padding: clamp(28px, 6vw, 40px) clamp(22px, 5vw, 34px);
+            max-width: 480px;
             width: 100%;
             border-bottom: 2px solid var(--burgundy);
         }
 
         .contact-intro {
-            font-size: clamp(11px, 2.5vw, 12px);
+            font-size: clamp(13px, 3vw, 15px);
             letter-spacing: 2px;
             font-weight: 200;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             opacity: 0.7;
         }
 
         .contact-name {
-            font-size: clamp(22px, 6vw, 28px);
+            font-size: clamp(26px, 7vw, 32px);
             font-weight: 300;
             letter-spacing: 3px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: var(--burgundy);
             text-shadow: 0 0 15px rgba(90, 0, 0, 0.4);
         }
 
         .contact-instagram {
             color: var(--white);
-            font-size: clamp(15px, 4vw, 17px);
+            font-size: clamp(18px, 5vw, 22px);
             text-decoration: none;
             display: inline-block;
-            margin: 8px 0;
+            margin: 10px 0;
             opacity: 0.8;
         }
         .contact-instagram:hover {
@@ -1130,10 +1030,10 @@
         }
 
         .contact-phone {
-            font-size: clamp(17px, 4.5vw, 19px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 1px;
             font-weight: 200;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             color: #ffffff !important;
             text-decoration: none !important;
         }
@@ -1143,28 +1043,17 @@
         }
 
         .contact-message {
-            font-size: clamp(11px, 2.5vw, 12px);
+            font-size: clamp(13px, 3vw, 15px);
             opacity: 0.8;
             font-style: normal;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            .contact-section {
-                padding: 50px 20px;
-            }
-        }
-        @media (max-width: 480px) {
-            .contact-section {
-                padding: 40px 16px;
-            }
+            margin-top: 12px;
+            line-height: 1.6;
         }
 
         /* ========== ТАЙМЕР + ФИНАЛЬНАЯ ФРАЗА ========== */
         .countdown-section {
             background-color: var(--black);
-            padding: 60px 25px 40px 25px;
+            padding: 60px 25px 45px 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1178,58 +1067,58 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
+            width: 50px;
             height: 1px;
             background: linear-gradient(to right, transparent, var(--burgundy), transparent);
         }
 
         .countdown-title {
-            font-size: clamp(16px, 4vw, 18px);
+            font-size: clamp(20px, 5vw, 24px);
             letter-spacing: 5px;
             font-weight: 300;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .countdown-timer {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(8px, 2vw, 12px);
+            gap: clamp(12px, 3vw, 20px);
             flex-wrap: wrap;
-            margin-top: 25px;
+            margin-top: 28px;
         }
 
         .countdown-number {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(28px, 8vw, 36px);
+            font-size: clamp(34px, 9vw, 44px);
             font-weight: 200;
             color: var(--white);
             letter-spacing: 2px;
             background: #111;
-            padding: clamp(6px, 1.5vw, 8px) clamp(10px, 3vw, 14px);
+            padding: clamp(8px, 2vw, 12px) clamp(14px, 4vw, 22px);
             border-bottom: 1px solid var(--burgundy);
         }
 
         .countdown-label {
-            font-size: clamp(9px, 2vw, 10px);
+            font-size: clamp(11px, 2.8vw, 13px);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 5px;
+            margin-top: 6px;
             display: block;
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .final-message {
-            margin-top: 50px;
+            margin-top: 55px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .final-waiting {
-            font-size: clamp(14px, 3.5vw, 16px);
+            font-size: clamp(18px, 4.5vw, 22px);
             font-weight: 200;
             letter-spacing: 2px;
             color: var(--white);
@@ -1237,36 +1126,19 @@
         }
 
         .final-names {
-            font-size: clamp(18px, 5vw, 24px);
+            font-size: clamp(22px, 6vw, 30px);
             font-weight: 300;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: var(--burgundy);
         }
 
         .final-line {
-            width: 50px;
+            width: 60px;
             height: 1px;
             background: var(--burgundy);
             opacity: 0.6;
             margin: 5px 0;
-        }
-
-        @media (max-width: 768px) {
-            .countdown-section {
-                padding: 50px 20px 35px 20px;
-            }
-            .final-message {
-                margin-top: 40px;
-            }
-        }
-        @media (max-width: 480px) {
-            .countdown-section {
-                padding: 40px 16px 30px 16px;
-            }
-            .final-message {
-                margin-top: 35px;
-            }
         }
 
         @keyframes sparkle {
@@ -1287,7 +1159,6 @@
     <div id="particles" class="particles-container"></div>
 
     <main id="main-content">
-        <!-- ПЕРВЫЙ ЭКРАН -->
         <div class="first-screen">
             <div class="hero">
                 <div class="hero-info">
@@ -1302,7 +1173,6 @@
             </div>
         </div>
 
-        <!-- Остальной контент -->
         <div class="rest-content" id="restContent">
             <section class="details fade-up-block">
                 <div class="invitation-greeting-line fade-up-item"></div>
@@ -1395,14 +1265,14 @@
                     <div class="form-group fade-up-item"><label class="form-label">Имя и Фамилия</label><input type="text" class="form-input" placeholder="Введите ваше имя и фамилию" required></div>
                     <div class="form-group fade-up-item"><label class="form-label">Сможете ли присутствовать?</label><div class="radio-group"><label class="radio-item"><input type="radio" name="attendance" value="yes" required><span>Да, с радостью</span></label><label class="radio-item"><input type="radio" name="attendance" value="no"><span>К сожалению, нет</span></label><label class="radio-item"><input type="radio" name="attendance" value="maybe"><span>Пока не уверен(а)</span></label></div></div>
                     <div class="form-group fade-up-item"><label class="form-label">Предпочтения по напиткам</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" value="игристое"> Игристое</label><label class="checkbox-item"><input type="checkbox" value="вино белое"> Вино белое</label><label class="checkbox-item"><input type="checkbox" value="вино красное"> Вино красное</label><label class="checkbox-item"><input type="checkbox" value="коньяк"> Коньяк</label><label class="checkbox-item"><input type="checkbox" value="виски"> Виски</label><label class="checkbox-item"><input type="checkbox" value="водка"> Водка</label><label class="checkbox-item"><input type="checkbox" value="не пью"> Не пью алкоголь</label></div></div>
-                    <div class="form-group fade-up-item"><label class="form-label">Аллергии / Особые пожелания</label><textarea class="form-textarea" placeholder="Укажите, если у вас есть аллергия на какие-либо продукты"></textarea></div>
+                    <div class="form-group fade-up-item"><label class="form-label">Аллергии</label><textarea class="form-textarea" placeholder="Укажите, если у вас есть аллергия на какие-либо продукты"></textarea></div>
                     <button type="submit" class="submit-button fade-up-item">Отправить</button>
                 </form>
             </section>
 
             <div class="infinite-ribbon fade-up-block">
                 <div class="infinite-ribbon-content">
-                    <span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span>
+                    <span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span><span>26.08.2026</span>
                 </div>
             </div>
 
@@ -1427,7 +1297,7 @@
                 <div class="final-message fade-up-item">
                     <div class="final-line"></div>
                     <p class="final-waiting">Мы вас очень ждём!</p>
-                    <p class="final-names">Ваши Артур & Таня</p>
+                    <p class="final-names">Ваши Артур и Таня</p>
                 </div>
             </section>
         </div>
