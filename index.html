@@ -378,7 +378,7 @@
             opacity: 0.8;
         }
 
-        /* ========== КАЛЕНДАРЬ ========== */
+        /* ========== КАЛЕНДАРЬ (оригинальный вид) ========== */
         .calendar-section {
             width: 100%;
             text-align: center;
@@ -404,11 +404,10 @@
         }
 
         .day-header {
-            color: #b88686;
-            font-weight: 400;
-            font-size: clamp(10px, 2.8vw, 12px);
+            color: var(--burgundy);
+            font-weight: 300;
+            font-size: clamp(9px, 2.5vw, 11px);
             padding-bottom: 7px;
-            letter-spacing: 0.5px;
         }
 
         .day {
@@ -421,11 +420,6 @@
             font-weight: 200;
         }
 
-        /* Подсветка ячейки свадебного дня */
-        .day.wedding-day {
-            color: var(--burgundy);
-            font-weight: 400;
-        }
         .day.wedding-day::after {
             content: '';
             position: absolute;
@@ -656,7 +650,6 @@
             line-height: 1.6;
             opacity: 0.7;
             padding: 0 20px;
-            text-align: center;
         }
 
         .gallery-scroll {
@@ -697,7 +690,7 @@
             transform: scale(1.02);
         }
 
-        /* ========== ПОДАРКИ (теперь выравнивание по центру, как в дресс-коде) ========== */
+        /* ========== ПОДАРКИ ========== */
         .gifts-section {
             background-color: var(--black);
             padding: 60px 25px 35px 25px;
@@ -716,26 +709,25 @@
         }
 
         .gift-card {
-            max-width: 540px;
+            max-width: 480px;
             width: 100%;
             margin: 0 auto;
-            background: transparent;
-            padding: 10px 0;
-            text-align: center; /* центр как в блоке дресс-код */
+            background: #111111;
+            padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
+            border-left: 2px solid var(--burgundy);
+            text-align: left;
         }
 
         .gift-card p {
-            margin-bottom: 18px;
-            font-size: clamp(13px, 3.5vw, 14px);
+            margin-bottom: 14px;
+            font-size: clamp(12px, 3vw, 13px);
             line-height: 1.7;
             font-weight: 200;
-            text-align: center;
-            color: var(--white);
-            opacity: 0.85;
+            text-align: left;
         }
 
         .envelope-image-wrapper {
-            margin-top: 25px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
             width: 100%;
@@ -755,7 +747,7 @@
             display: block;
         }
 
-        /* ========== ВАЖНО (выравнивание по центру) ========== */
+        /* ========== ВАЖНО (с рамкой как в оригинале) ========== */
         .important-section {
             background-color: #111111;
             padding: 60px 25px;
@@ -774,26 +766,23 @@
         }
 
         .important-box {
-            max-width: 540px;
+            max-width: 480px;
             width: 100%;
             margin: 0 auto;
-            border: none;
-            padding: 0;
-            background: transparent;
-            text-align: center;
+            border: 1px solid var(--burgundy);
+            opacity: 0.7;
+            padding: clamp(25px, 6vw, 35px) clamp(20px, 5vw, 30px);
+            background: #0a0a0a;
+            text-align: left;
         }
 
         .important-box p {
             font-weight: 200;
             line-height: 1.7;
-            font-size: clamp(13px, 3.5vw, 14px);
-            text-align: center;
-            margin-bottom: 18px;
-            color: var(--white);
-            opacity: 0.85;
+            font-size: clamp(12px, 3vw, 13px);
         }
 
-        /* ========== АНКЕТА (возвращаем исходные компактные шрифты) ========== */
+        /* ========== АНКЕТА ========== */
         .survey-section {
             background-color: var(--black);
             padding: 60px 25px;
@@ -820,6 +809,11 @@
             max-width: 400px;
             line-height: 1.8;
             text-align: center;
+        }
+
+        .survey-subtitle strong {
+            font-weight: 300;
+            color: var(--white);
         }
 
         .survey-form {
@@ -858,6 +852,17 @@
             transition: border-color 0.3s ease;
             outline: none;
             width: 100%;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-bottom-color: var(--burgundy);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235a0000' d='M6 8L0 0h12z'/%3E%3C/svg%3E") no-repeat right center;
+            padding-right: 30px;
         }
 
         .form-textarea {
@@ -969,7 +974,7 @@
             padding: 0 clamp(18px, 5vw, 25px);
         }
 
-        /* ========== КОНТАКТЫ ========== */
+        /* ========== КОНТАКТЫ (телефон как ссылка) ========== */
         .contact-section {
             background-color: #111111;
             padding: 60px 25px;
@@ -1022,6 +1027,10 @@
             letter-spacing: 1px;
             font-weight: 200;
             margin-bottom: 15px;
+            color: #ffffff !important;
+            text-decoration: none !important;
+        }
+        a.contact-phone, .contact-phone a, .contact-phone:any-link {
             color: #ffffff !important;
             text-decoration: none !important;
         }
@@ -1238,7 +1247,7 @@
                 <h2 class="important-title fade-up-item">Важно</h2>
                 <div class="important-box fade-up-item">
                     <p>Дорогие гости, вы знаете, что мы очень любим детей, но нашу свадьбу мы видим в формате «для взрослых» : с бокалом игристого и не детскими развлечениями!</p>
-                    <p>Пожалуйста, оставьте малышей в надежных руках на время нашего торжества. Ведь любому родителю иногда следует отдыхать, забыв на время о повседневных заботах.</p>
+                    <p style="margin-top: 16px;">Пожалуйста, оставьте малышей в надежных руках на время нашего торжества. Ведь любому родителю иногда следует отдыхать, забыв на время о повседневных заботах.</p>
                 </div>
             </section>
 
@@ -1265,7 +1274,7 @@
                     <div class="contact-intro">По всем вопросам вы можете обратиться к нашему свадебному организатору</div>
                     <div class="contact-name">Света Латош</div>
                     <a href="https://instagram.com/svetlana_latosh" target="_blank" class="contact-instagram">@svetlana_latosh</a>
-                    <div class="contact-phone">+375 29 582 6262</div>
+                    <a href="tel:+375295826262" class="contact-phone">+375 29 582 6262</a>
                     <div class="contact-message">Мы будем полностью погружены в этот волшебный день, но наш свадебный организатор Света с теплотой и заботой ответит на все ваши вопросы и поможет с любыми деталями.</div>
                 </div>
             </section>
@@ -1306,7 +1315,7 @@
                 setTimeout(adjustViewportHeight, 100);
             });
 
-            // Частицы появляются только на черном экране, а не везде
+            // Частицы появляются только на черном экране
             function createParticles() {
                 particlesContainer.innerHTML = '';
                 for(let i = 0; i < 120; i++) {
@@ -1327,7 +1336,6 @@
             function startParticlesOnBlackScreenOnly() {
                 createParticles();
                 particlesContainer.classList.add('active');
-                // Автоматически убираем через 2.5 секунды
                 setTimeout(() => {
                     particlesContainer.classList.remove('active');
                 }, 2500);
@@ -1337,7 +1345,7 @@
                 const img = openBtn.querySelector('img');
                 if(img) img.style.transform = 'rotate(360deg) scale(0.8)';
                 
-                // Запускаем частицы синхронно с появлением черного фона
+                // Запускаем частицы синхронно с черным фоном
                 setTimeout(() => startParticlesOnBlackScreenOnly(), 450);
                 
                 setTimeout(() => envelope.classList.add('fading'), 200);
